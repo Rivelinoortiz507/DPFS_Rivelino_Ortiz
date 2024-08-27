@@ -1,0 +1,145 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 5px;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.logo {
+    position: relative;
+    right: 20px;
+    width: 100px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around;
+    align-items: center;
+    background-color: rgb(72, 132, 155);
+    height: 90px;
+}
+
+
+input {
+    width: 40%;
+    height: 40%;
+    border-radius: 15px;
+}
+
+a {
+    font-size: 20px;
+    color: rgb(230, 230, 230);
+    padding-left: 30px;
+    text-decoration: none;
+}
+
+.cart {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.cart-count {
+    background-color: red;
+    border-radius: 50%;
+    padding: 5px 10px;
+    margin-left: 10px;
+    color: #fff;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-detail {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 5px 15px 1px;
+}
+
+img{
+    width: 180px;
+}
+
+.product-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-info h2 {
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.product-info .price {
+    font-size: 20px;
+    color: #e67e22;
+    margin-bottom: 15px;
+}
+
+ .product-info .description {
+    font-size: 16px;
+    text-align: justify;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.quantity label {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.quantity input {
+    width: 60px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.add-to-cart {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .5s all ease;
+}
+
+.add-to-cart:hover {
+    background-color: #218838;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around;
+    align-items: center;
+    background-color: rgb(72, 132, 155);
+    font-size: 17px;
+    color: rgb(230, 230, 230);
+    margin-top: 100px;
+}

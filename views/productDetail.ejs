@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <link rel="stylesheet" href="/css/productDetail.css">
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="/images/Logos/Logo Fantasy Book.png"  alt="logo">
+        <input type="text" placeholder="¿Que busca?">
+        <div>
+            <a href="/public/Login/">Login</a>
+            <a href="/public/Registro/">Registrarse</a>
+        </div>
+        <div class="cart"> <span>🛒</span> </div>
+       
+    </header>
+    <main>
+        <div class="product-detail">
+            <div class="product-image">
+           <img src="/images/Harry Potter/Harry potter 1.jpg" alt="">
+            </div>
+
+                                   <!--Convertir las Partes Dinámicas en EJS:-->
+
+            <div class="product-info">
+                <h1><%= product.name %></h1>
+                <p><%= product.description %></p>
+                <p>Precio: $<%= product.price %></p>
+
+                <div class="quantity">
+                    <label for="quantity">Cantidad:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1">
+                </div>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <img class="logo" src="/images/Logos/Logo Fantasy Book.png" width="80px" height="80px" alt="logo">
+        <p>Legal
+            <br>
+            Términos y condiciones
+            <br>
+            Política de privacidad
+        </p>
+
+        <p>Contactanos:
+            <br>
+            +507 442-0514
+            <br>
+            fantasybook@gmail.com
+        </p>
+    </footer>
+</body>
+
+</html>
