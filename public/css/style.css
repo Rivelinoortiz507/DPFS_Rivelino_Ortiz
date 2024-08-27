@@ -1,8 +1,7 @@
 * {
   font-family:Georgia, 'Times New Roman', Times, serif;
   padding: 0;
-  margin: 1px;
-  
+  margin: 1px; 
 }
 
 header {
@@ -14,7 +13,6 @@ header {
   background-color: rgb(72, 132, 155);
   height: 90px;
 }
-
 
 
 input {

@@ -1,32 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%- include('partials/head') %>
+    
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap"
-        rel="stylesheet">
-      <link rel="shortcut icon" href="/images/Logos/Logo Fantasy Book.png" type="image/x-icon">
 </head>
 
 <body>
-    <header>
-        <img class="logo" src="/images/Logos/Logo Fantasy Book.png" width="80px" height="80px" alt="logo">
-        <input type="text" placeholder="¿Que busca?">
-        <div>
-            <a href="/public/Login/">Login</a>
-            <a href="/public/Registro/">Registrarse</a>
-        </div>
-        <div class="cart">
-            <span>🛒</span>
-        </div>
-    </header>
+
+  <%- include('partials/header') %>
 
     <div>
         <img class="banner" src="/images/Banner.png" alt="banner">
@@ -308,22 +287,7 @@
         </div>
     </main>
 
-    <footer>
-        <img class="logo" src="/images/Logos/Logo Fantasy Book.png" width="80px" height="80px" alt="logo">
-        <p>Legal
-            <br>
-            Términos y condiciones
-            <br>
-            Política de privacidad
-        </p>
-
-        <p>Contactanos:
-            <br>
-            +507 442-0514
-            <br>
-            fantasybook@gmail.com
-        </p>
-    </footer>
+    <%- include('partials/footer') %>
 </body>
 
 </html>

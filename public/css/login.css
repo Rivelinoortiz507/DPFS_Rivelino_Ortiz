@@ -1,17 +1,42 @@
 * {
-    margin: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 0;
-    
+    margin: 1px;
 }
 
 header {
-    background-color: rgb(72, 132, 155);
-    color: white;
-    padding: 15px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around;
     align-items: center;
+    background-color: rgb(72, 132, 155);
+    height: 90px;
 }
+
+input {
+    width: 40%;
+    height: 30%;
+    border-radius: 15px;
+}
+
+
+a {
+    font-size: 20px;
+    color: rgb(247, 216, 216);
+    padding-left: 30px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.cart {
+    font-size: 24px;
+    cursor: pointer;
+}
+
 
 .container {
     display: flex;
@@ -19,30 +44,30 @@ header {
     background-color: rgb(212, 210, 210);
     width: 400px;
     border-radius: 20px;
-    margin: auto;
+    margin: 40px auto;
     box-shadow: 0 5px 15px 1px;
 }
 
-input{
+.input-registo {
     width: 80%;
     font-size: 23px;
     border-radius: 10px;
     margin: 12px auto;
 }
 
-::placeholder{
-  font-size: 15px;
-  padding-left: 7px;
+::placeholder {
+    font-size: 15px;
+    padding-left: 7px;
 }
 
 
-label{
+label {
     font-size: 20px;
-   padding: 20px;
+    padding: 20px;
 
 }
 
-select{
+select {
     width: 100px;
     margin: auto;
 }
@@ -50,12 +75,12 @@ select{
 
 
 
-h1{
+h1 {
     text-align: center;
     padding: 20px;
 }
 
-p{
+p {
     font-size: 20px;
     padding-top: 10px;
     padding-left: 40px;
@@ -63,7 +88,7 @@ p{
 
 
 
-button{
+button {
     font-size: 16px;
     margin: 40px auto;
     padding: 8px 30px 8px 30px;
@@ -75,7 +100,18 @@ button{
     transition: .5s all ease;
 }
 
-button:hover{
+button:hover {
     background-color: #218838;
 }
 
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around;
+    align-items: center;
+    background-color: rgb(72, 132, 155);
+    font-size: 17px;
+    color: rgb(230, 230, 230);
+    margin-top: 100px;
+  }

@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('partials/head') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/register.css">
     <title>Registro</title>
 </head>
 
 <body>
 
+    <%- include('partials/header') %>
+
     <div class="container">
         <h1>Crear una cuenta</h1>
-        <input type="text" placeholder="Nombre" required> 
-        <input type="email" placeholder="Correo" required> 
-        <input type="password" placeholder="Contraseña" required > 
+        <input class="input-registo" type="text" placeholder="Nombre" required> 
+        <input class="input-registo" type="email" placeholder="Correo" required> 
+        <input class="input-registo" type="password" placeholder="Contraseña" required > 
 
         <label for="pais">Selecciona tu pais:
             <select name="pais" id="pais" required>
@@ -34,6 +32,8 @@
 
              <button>Crear cuenta</button>
     </div>
+
+    <%- include('partials/footer') %>
 
 </body>
 </html>

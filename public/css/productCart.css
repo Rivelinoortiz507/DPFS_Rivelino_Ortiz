@@ -1,8 +1,7 @@
-body {
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    margin: 5px;
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 1px;
     padding: 0;
-    background-color: #f4f4f4;
 }
 
 header {
@@ -14,15 +13,21 @@ header {
     align-items: center;
 }
 
+input {
+    width: 40%;
+    height: 30%;
+    border-radius: 15px;
+}
+
 
 a {
     font-size: 20px;
-    color: white;
+    color: rgb(247, 216, 216);
     padding-left: 30px;
     text-decoration: none;
 }
 
-a:hover{
+a:hover {
     text-decoration: underline;
 }
 
@@ -118,7 +123,7 @@ main {
     border-bottom: 1px solid #b9b6b6;
 }
 
-.cart-itbms{
+.cart-itbms {
     display: flex;
     justify-content: space-between;
     font-size: 18px;
@@ -137,7 +142,7 @@ main {
 }
 
 .checkout-btn {
-    background-color:  #28a745;
+    background-color: #28a745;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -153,10 +158,12 @@ main {
 
 footer {
     display: flex;
-    justify-content:space-evenly;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around;
+    align-items: center;
     background-color: rgb(72, 132, 155);
+    font-size: 17px;
     color: rgb(230, 230, 230);
-    text-align: center;
-    padding: 10px;
-    margin-top: 20px;
+    margin-top: 100px;
 }
