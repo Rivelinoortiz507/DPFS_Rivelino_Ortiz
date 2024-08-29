@@ -1,0 +1,33 @@
+<%- include('../partials/head') %>
+
+    <link rel="stylesheet" href="/css/productDetail.css">
+    </head>
+
+    <body>
+
+        <%- include('../partials/header') %>
+            <h1>Detalles del Producto</h1>
+
+            <main>
+                <div class="product-detail ">
+
+                    <% if (product.imageUrl) { %>
+                        <img src="<%= product.imageUrl %>" alt="<%= product.name %>" width="300">
+                        <% } %>
+                            <div>
+                                <h2>
+                                    <%= product.name %>
+                                </h2>
+                                <p class="description">
+                                    <%= product.description %>
+                                </p>
+                                <p class="price">Precio: $<%= product.price %>
+                                </p>
+                                <button class="add-to-cart">Añadir al carrito</button>
+                            </div>
+                </div>
+            </main>
+
+
+
+            <%- include('../partials/footer') %>

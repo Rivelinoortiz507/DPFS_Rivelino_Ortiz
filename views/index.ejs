@@ -7,287 +7,100 @@
 
   <%- include('partials/header') %>
 
-    <div>
-        <img class="banner" src="/images/Banner.png" alt="banner">
+  <div>
+    <img class="banner" src="/images/Banner.png" alt="banner">
+</div>
+
+<p class="p-principal">
+    Ya seas un veterano del género o un aventurero curioso en busca de su próxima gran lectura,
+    Fantasy Books está aquí para guiarte en tu viaje a través de las páginas de la fantasía.
+</p>
+
+<main>
+    <h2 class="seccion-libros">Más Vendidos:</h2>
+    <section>
+        <% const products = [
+            { id: 1, name: 'Harry Potter 1', imageUrl: '/images/Harry Potter/Harry potter 1.jpg', price: 19.99 },
+            { id: 2, name: 'Harry Potter 2', imageUrl: '/images/Harry Potter/Harry potter 2.jpg', price: 19.99 },
+            { id: 3, name: 'Harry Potter 3', imageUrl: '/images/Harry Potter/Harry potter 3.jpg', price: 19.99 },
+            { id: 4, name: 'Harry Potter 4', imageUrl: '/images/Harry Potter/Harry potter 4.gif', price: 19.99 },
+            { id: 5, name: 'Harry Potter 5', imageUrl: '/images/Harry Potter/Harry potter 5.jpg', price: 19.99 }
+        ]; %>
+
+        <% products.forEach(product => { %>
+        <article>
+            <img src="<%= product.imageUrl %>" alt="<%= product.name %>" class="product-img">
+            <div class="libro-precio">
+                <p><%= product.name %></p>
+                <hr>
+                <p>$<%= product.price %></p>
+                <a href="/products/<%= product.id %>" class="añadir-carrito-btn">Ver detalle</a>
+            </div>
+        </article>
+        <% }); %>
+    </section>
+
+    <!-- Segunda seccion -->
+    <h2 class="seccion-libros">Ofertas Especiales:</h2>
+    <section>
+        <% const specialOffers = [
+            { id: 6, name: 'Narnia 1', imageUrl: '/images/Las Crónicas de Narnia/Las cronicas de narnia 1.jpg', price: 19.99 },
+            { id: 7, name: 'Narnia 2', imageUrl: '/images/Las Crónicas de Narnia/Las cronicas de narnia 2.jpg', price: 19.99 },
+            { id: 8, name: 'Narnia 3', imageUrl: '/images/Las Crónicas de Narnia/Las cronicas de narnia 3.jpg', price: 19.99 },
+            { id: 9, name: 'Narnia 4', imageUrl: '/images/Las Crónicas de Narnia/Las cronicas de narnia 4.jpg', price: 19.99 },
+            { id: 10, name: 'Narnia 5', imageUrl: '/images/Las Crónicas de Narnia/Las cronicas de narnia 5.jpg', price: 19.99 }
+        ]; %>
+
+        <% specialOffers.forEach(product => { %>
+        <article>
+            <img src="<%= product.imageUrl %>" alt="<%= product.name %>" class="product-img">
+            <div class="libro-precio">
+                <p><%= product.name %></p>
+                <hr>
+                <p>$<%= product.price %></p>
+                <a href="/products/<%= product.id %>" class="añadir-carrito-btn">Ver detalle</a>
+            </div>
+        </article>
+        <% }); %>
+    </section>
+    
+    <h2 class="seccion-libros">Categorías:</h2>
+    <section> 
+        <article>
+            <h2>Fantasías</h2>
+            <img src="/images/Alicia en el País de las Maravillas/Alicia en el pais de la maravillas 1.jpeg" alt="" class="product-img">
+        </article>
+        <article>
+            <h2>Aventuras</h2>
+            <img src="/images/Alicia en el País de las Maravillas/Alicia en el pais de la maravillas 1.jpeg" alt="" class="product-img">
+        </article>
+        <article>
+            <h2>Ciencia Ficción</h2>
+            <img src="/images/Alicia en el País de las Maravillas/Alicia en el pais de la maravillas 1.jpeg" alt="" class="product-img">
+        </article>
+    </section>
+
+    <div class="quienes-somos">
+        <h1>¿Quiénes somos?</h1>
+        <p>Fantasy Books es un refugio para todos aquellos que creen en la magia de las palabras y los mundos
+            más allá de lo visible. Nacimos del amor por la literatura fantástica, por las historias que nos
+            transportan
+            a reinos lejanos, donde la imaginación no tiene límites y cada página es un portal a aventuras épicas.
+        </p>
+        <br>
+        <p>Somos apasionados lectores y coleccionistas de los más grandes relatos de fantasía, desde los clásicos
+            que forjaron el género hasta las nuevas voces que están redefiniendo sus fronteras.
+            Nuestro objetivo es compartir con nuestros lectores la maravilla y el asombro que sentimos al explorar
+            tierras misteriosas, enfrentarnos a criaturas míticas y descubrir héroes inesperados.
+        </p>
+        <br>
+        <p>
+            En Fantasy Books, creemos que los libros son más que simples historias: son viajes, experiencias y,
+            sobre todo, magia pura. Queremos ser el puente que te conecta con los mundos que siempre has
+            soñado, ofreciéndote una cuidada selección de libros que despierten tu imaginación
+            y te inviten a soñar despierto.
+        </p>
     </div>
+</main>
 
-    <p class="p-principal">
-        Ya seas un veterano del género o un aventurero curioso en busca de su próxima gran lectura,
-        Fantasy Books está aquí para guiarte en tu viaje a través de las páginas de la fantasía.
-    </p>
-    <main>
-        <h2 class="seccion-libros">Harry Potter</h2>
-        <section>
-            <article>
-                <img src="/images/Harry Potter/Harry potter 1.jpg" alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Harry Potter 1</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Harry Potter/Harry potter 2.jpg" alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Harry Potter 2</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images//Harry Potter/Harry potter 3.jpg" alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Harry Potter 3</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Harry Potter/Harry potter 4.gif" alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Harry Potter 4</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Harry Potter/Harry potter 5.jpg" alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Harry Potter 5</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-        </section>
-
-        <!-- Segunda seccion -->
-        <h2 class="seccion-libros">Las Crónicas de Narnia</h2>
-        <section>
-            <article>
-                <img src="/images/Las Crónicas de Narnia/Las cronicas de narnia 1.jpg" alt=""
-                    class="product-img">
-                <div class="libro-precio">
-                    <p>Narnia 1</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Las Crónicas de Narnia/Las cronicas de narnia 2.jpg" alt=""
-                    class="product-img">
-                <div class="libro-precio">
-                    <p>Narnia 2</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Las Crónicas de Narnia/Las cronicas de narnia 3.jpg" alt=""
-                    class="product-img">
-                <div class="libro-precio">
-                    <p>Narnia 3</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Las Crónicas de Narnia/Las cronicas de narnia 4.jpg" alt=""
-                    class="product-img">
-                <div class="libro-precio">
-                    <p>Narnia 4</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Las Crónicas de Narnia/Las cronicas de narnia 5.jpg" alt=""
-                    class="product-img">
-                <div class="libro-precio">
-                    <p>Narnia 5</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-        </section>
-
-        <!-- Tercera seccion -->
-        <h2 class="seccion-libros">Alicia en el País de las Maravillas</h2>
-        <section>
-            <article>
-                <img src="/images/Alicia en el País de las Maravillas/Alicia en el pais de la maravillas 1.jpeg"
-                    alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Alicia 1</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Alicia en el País de las Maravillas/Alicia en el pais de la maravillas 2.webp"
-                    alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Alicia 2</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Alicia en el País de las Maravillas/Alicia en el pais de la maravillas 3.jpg"
-                    alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Alicia 3</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Alicia en el País de las Maravillas/Alicia en el pais de la maravillas 4.jpg"
-                    alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Alicia 4</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-        </section>
-        <!-- Cuarta seccion -->
-        <h2 class="seccion-libros">Peter pan</h2>
-        <section>
-            <article>
-                <img src="/images/Peter Pan/Peter pan 1.jpg" alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Peter pan 1</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Peter Pan/Peter pan 2.png" alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Peter pan 2</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Peter Pan/Peter pan 3.jpg" alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Peter pan 3</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/Peter Pan/Peter pan 4.jpg" alt="" class="product-img">
-                <div class="libro-precio">
-                    <p>Peter pan 4</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-
-        </section>
-
-        <!-- Quinta seccion -->
-        <h2 class="seccion-libros">El señor de los anillos</h2>
-        <section>
-            <article>
-                <img src="/images/El señor de los anillos/El señor de los anillos 1.webp" alt=""
-                    class="product-img">
-                <div class="libro-precio">
-                    <p>El señor de los anillos 1</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/El señor de los anillos/El señor de los anillos 2.webp" alt=""
-                    class="product-img">
-                <div class="libro-precio">
-                    <p>El señor de los anillos 2</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-            <article>
-                <img src="/images/El señor de los anillos/El señor de los anillos 3.webp" alt=""
-                    class="product-img">
-                <div class="libro-precio">
-                    <p>El señor de los anillos 3</p>
-                    <hr>
-                    <p>19.99</p>
-                    <button class="añadir-carrito-btn">
-                        Añadir al carrito
-                    </button>
-            </article>
-        </section>
-
-        <div class="quienes-somos">
-            <h1>¿Quiénes somos?</h1>
-
-            <p>Fantasy Books es un refugio para todos aquellos que creen en la magia de las palabras y los mundos
-                más allá de lo visible. Nacimos del amor por la literatura fantástica, por las historias que nos
-                transportan
-                a reinos lejanos, donde la imaginación no tiene límites y cada página es un portal a aventuras épicas.
-            </p>
-            <br>
-            <p>Somos apasionados lectores y coleccionistas de los más grandes relatos de fantasía, desde los clásicos
-                que forjaron el género hasta las nuevas voces que están redefiniendo sus fronteras.
-                Nuestro objetivo es compartir con nuestros lectores la maravilla y el asombro que sentimos al explorar
-                tierras misteriosas, enfrentarnos a criaturas míticas y descubrir héroes inesperados.
-            </p>
-            <br>
-            <p>
-                En Fantasy Books, creemos que los libros son más que simples historias: son viajes, experiencias y,
-                sobre todo, magia pura. Queremos ser el puente que te conecta con los mundos que siempre has
-                soñado, ofreciéndote una cuidada selección de libros que despierten tu imaginación
-                y te inviten a soñar despierto.
-            </p>
-
-        </div>
-    </main>
-
-    <%- include('partials/footer') %>
-</body>
-
-</html>
+<%- include('partials/footer') %>

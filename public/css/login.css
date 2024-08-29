@@ -22,7 +22,7 @@ input {
 
 
 a {
-    font-size: 20px;
+    font-size: 18px;
     color: rgb(247, 216, 216);
     padding-left: 30px;
     text-decoration: none;
@@ -110,8 +110,8 @@ footer {
     justify-content: space-evenly;
     align-content: space-around;
     align-items: center;
-    background-color: rgb(72, 132, 155);
     font-size: 17px;
+    background-color: rgb(72, 132, 155);
     color: rgb(230, 230, 230);
     margin-top: 100px;
   }

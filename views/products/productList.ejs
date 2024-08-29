@@ -1,0 +1,37 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="css/productList.css">
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+
+    <div>
+        <img class="banner" src="/images/Banner.png" alt="banner">
+    </div>
+
+    <p class="p-principal">
+        Explora nuestro catálogo de libros y encuentra historias que despiertan la imaginación.
+         Desde épicas aventuras hasta mágicas leyendas, hay un libro esperando por ti.
+    </p>
+
+<main>
+    
+            <% categories.forEach(category => { %>
+                <h2><%= category.name %></h2>
+                <div class="product-list">
+                  <% category.products.forEach(product => { %>
+                    <div class="product">
+                      <h3><%= product.name %></h3>
+                      <img class="product-img" src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                      <p>Price: $<%= product.price %></p>
+                      <a href="/products/<%= product.id %>">Ver detalles</a>
+                    </div>
+                  <% }) %>
+                </div>
+              <% }) %>
+</main>
+
+    <%- include('../partials/footer') %>
+</body>
+
+</html>
