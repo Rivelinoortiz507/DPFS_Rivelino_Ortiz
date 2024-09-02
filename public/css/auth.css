@@ -1,0 +1,114 @@
+
+body {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around;
+    align-items: center;
+    background-color: rgb(72, 132, 155);
+    height: 90px;
+  }
+  
+  
+  input {
+    width: 40%;
+    height: 30%;
+    border-radius: 15px;
+  }
+  
+  .links a {
+    font-size: 18px;
+    color: rgb(247, 216, 216);
+    padding-left: 30px;
+    text-decoration: none;
+  }
+  
+  
+  .cart{
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  a{
+    color: black;
+    text-decoration: none;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  input[type="text"], 
+  input[type="email"], 
+  input[type="password"], 
+  input[type="file"], 
+  select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    margin-right: 0.5rem;
+  }
+  
+  .error-message {
+    color: red;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around;
+    align-items: center;
+    background-color: rgb(72, 132, 155);
+    font-size: 17px;
+    color: rgb(230, 230, 230);
+    margin-top: 100px;
+  }

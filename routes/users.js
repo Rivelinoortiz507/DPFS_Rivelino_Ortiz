@@ -1,9 +1,20 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const usersController = require('../controllers/usersController');
+const upload = require('../config/upload'); // Asegúrate de que la ruta sea correcta
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/register', usersController.getRegisterForm);
+router.post('/register', upload.single('profileImage'), usersController.registerUser);
+router.get('/login', usersController.getLoginForm);
+router.post('/login', usersController.loginUser);
+router.get('/profile', usersController.getProfile);
+router.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+      if (err) {
+        return res.status(500).send('Error al cerrar sesión.');
+      }
+      res.redirect('/users/login');
+    });
 });
 
 module.exports = router;

@@ -1,18 +1,22 @@
 const express = require('express');
 const router = express.Router();
+const usersController = require('../controllers/usersController');
+const upload = require('../config/upload'); 
 
-// Ruta para mostrar el formulario de registro
-router.get('/register', (req, res) => {
-    res.render('users/register'); // Renderiza register.ejs
-});
+router.get('/register', usersController.getRegisterForm);
+router.post('/register', upload.single('profileImage'), usersController.registerUser);
+router.get('/login', usersController.getLoginForm);
+router.post('/login', usersController.loginUser);
+router.get('/profile', usersController.getProfile);
 
-// Ruta para manejar el envío del formulario de registro
-router.post('/register', (req, res) => {
-    const { username, password, email } = req.body;
-
-    // Lógica para registrar al usuario (aquí solo se muestra un mensaje por simplicidad)
-    res.send(`Registro exitoso para ${username}`);
-});
+router.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+      if (err) {
+        return res.status(500).send('Error al cerrar sesión.');
+      }
+      res.redirect('/users/login');
+    });
+  });
+    
 
 module.exports = router;
-    

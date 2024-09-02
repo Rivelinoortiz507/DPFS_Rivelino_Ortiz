@@ -35,9 +35,6 @@ input {
   text-decoration: none;
 }
 
-.link a:hover{
-  text-decoration: underline;
-}
 
 .cart{
   font-size: 24px;
@@ -127,7 +124,7 @@ article:hover{
   display: block;
   cursor: pointer;
   text-align: center;
-  font-size: 18px;
+  font-size: 14px;
   width: 90%;
   color: #fff;
   background-color: #28a745;

@@ -88,7 +88,7 @@
   .product {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 200px;
     background: #fff;
     padding: 15px;
@@ -102,7 +102,7 @@
   }
   
   .product h3 {
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 10px;
     text-align: center;
   }
@@ -116,17 +116,18 @@
   
   .product p {
     font-size: 1.1em;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-align: center;
   }
   
   .product a {
     display: block;
     text-align: center;
-    font-size: 1em;
+    font-size: 14px;
+    margin: 3px;
     color: #fff;
     background-color: #28a745;
-    padding: 10px;
+    padding: 2px;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease-in-out;
@@ -136,6 +137,19 @@
     background-color: #218838;
   }
   
+.btn-delete{
+  color: white;
+  background-color: #d31414;
+  font-size: 14px;
+  border: none;
+  padding: 6px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-delete:hover{
+  background-color: #b31a1a;
+}
   
   
   footer {

@@ -1,55 +1,36 @@
-<%- include('partials/head') %>
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
     <link rel="stylesheet" href="/css/productCart.css">
 </head>
-
 <body>
-
-  <%- include('partials/header') %>
+    <%- include('partials/header') %>
 
     <main>
-        <div class="product-list">
-            <div class="product-item">
-                <img src="/images/Harry Potter/Harry potter 1.jpg" alt="Harry potter 1">
-                <h2>Harry Potter 1</h2>
-                <p>$19.99</p>
-                <button class="add-to-cart">Agregar al carrito</button>
-            </div>
-            <div class="product-item">
-                <img src="/images/Harry Potter/Harry potter 1.jpg" alt="Harry potter 2">
-                <h2>Harry Potter 2</h2>
-                <p>$19.99</p>
-                <button class="add-to-cart">Agregar al carrito</button>
-            </div>
-            <!-- Agrega más productos aquí -->
+        <div class="cart-items">
+            <!-- Los productos del carrito se agregarán aquí mediante JavaScript -->
         </div>
-
         <div class="cart-summary">
             <h2>Total del carrito</h2>
-            <div class="cart-items">
-                <div class="cart-item">
-                    <span>Harry Potter 1</span>
-                    <span>$19.99</span>
-                </div>
-                <div class="cart-item">
-                    <span>Harry Potter 2</span>
-                    <span>$19.99</span>
-                </div>
-            </div>
             <div class="cart-itbms">
                 <span>ITBMS (7%):</span>
-                <span>$0.00</span>
+                <span id="itbms">$0.00</span>
             </div>
-
-                <div class="cart-total">
-                    <span>Total:</span>
-                    <span>$00.00</span>
-
-                </div>
-                <button class="checkout-btn">Pagar</button>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="total">$0.00</span>
+            </div>
+            <button class="checkout-btn">Pagar</button>
+            <button class="empty-cart-btn">Vaciar carrito</button>
+        </div>
+        
     </main>
 
     <%- include('partials/footer') %>
-    
+
+    <script src="/javascripts/addCart.js" defer></script>
 </body>
 </html>
