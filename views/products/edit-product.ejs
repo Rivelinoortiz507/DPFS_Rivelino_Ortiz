@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Editar Producto</h1>
-    <form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <form class="principal-form" action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
         <label for="name">Nombre del Producto:</label>
         <input type="text" id="name" name="name" value="<%= product.name %>" required>
 
@@ -29,12 +29,12 @@
     </form>
     
     <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
-        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <button type="submit" class="btn-danger">Eliminar</button>
       </form>
 
     <br>
 
-    <a href="/products">Volver a la lista de productos</a>
+    <a class="volver" href="/products">Volver a la lista de productos</a>
 
     <%- include('../partials/footer') %>
 </body>

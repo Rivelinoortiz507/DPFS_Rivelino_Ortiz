@@ -1,79 +1,113 @@
-* {
+/* General reset and layout */
+body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: 0;
     padding: 0;
+    margin: 0px;
+    background-color: #f4f4f4;
+}
+
+.search{
+
 }
 
 header {
-    background-color: rgb(72, 132, 155);
-    color: rgb(230, 230, 230);
-    padding: 15px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around;
     align-items: center;
-}
+    background-color: rgb(72, 132, 155);
+    height: 90px;
+  }
 
-a {
+  .buscador {
+    width: 250px;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    }
+    
+  .links a {
     font-size: 18px;
     color: rgb(247, 216, 216);
     padding-left: 30px;
     text-decoration: none;
-}
-
-.cart {
+  }
+  
+  
+  .cart{
     font-size: 24px;
     cursor: pointer;
-}
+  }
+  
+  a{
+    color: black;
+    text-decoration: none;
+  }
 
 h1 {
-    font-size: 24px;
     text-align: center;
-    margin: 20px;
+    color: #333;
+    margin-top: 20px;
 }
 
+
 form {
-    display: flex;
-    flex-direction: column;
     max-width: 600px;
     margin: 0 auto;
-    padding: 10px;
-    border-radius: 20px;
-    box-shadow: 1px 1px 15px 1px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
+    display: block;
     margin: 10px 0 5px;
+    color: #555;
 }
 
-input[type="text"], input[type="number"], textarea {
-    padding: 8px;
-    border: 1px solid #ccc;
+input[type="text"],
+input[type="number"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #999999;
     border-radius: 4px;
-    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
 }
 
 button {
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 
+
 footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-content: space-around;
-  align-items: center;
-  background-color: rgb(72, 132, 155);
-  font-size: 17px;
-  color: rgb(230, 230, 230);
-  margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around;
+    align-items: center;
+    background-color: rgb(72, 132, 155);
+    font-size: 17px;
+    color: rgb(230, 230, 230);
+    margin-top: 100px;
 }

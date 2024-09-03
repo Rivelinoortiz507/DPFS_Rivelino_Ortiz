@@ -13,11 +13,12 @@ header {
     align-items: center;
 }
 
-input {
-    width: 40%;
-    height: 30%;
-    border-radius: 15px;
-}
+.buscador {
+    width: 250px;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    }
 
 
 a {

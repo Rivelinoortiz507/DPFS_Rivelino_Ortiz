@@ -17,11 +17,12 @@ body {
   }
   
   
-  input {
-    width: 40%;
-    height: 30%;
-    border-radius: 15px;
-  }
+  .buscador {
+    width: 250px;
+    height: 10px;
+    border-radius: 10px;
+    padding-left: 10px;
+    }
   
   .links a {
     font-size: 18px;

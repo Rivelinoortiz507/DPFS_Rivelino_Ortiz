@@ -147,16 +147,24 @@
     "id": 19,
     "name": "El señor de los anillos 2",
     "description": "Las Dos Torres es el segundo libro de El Señor de los Anillos de J.R.R. Tolkien, publicado en 1954. La historia sigue a Frodo y Sam en su viaje hacia el Monte del Destino para destruir el Anillo Único, con Gollum como su guía. Paralelamente, Aragorn, Legolas y Gimli buscan a los hobbits Merry y Pippin, quienes han sido capturados por orcos. La trama se centra en la lucha contra el mago Saruman y las fuerzas oscuras que amenazan la Tierra Media, mientras las alianzas y batallas se intensifican.",
-    "price": 19.99,
+    "price": 22.5,
     "category": "Fantasia, Aventura",
     "imageUrl": "/images/El señor de los anillos/El señor de los anillos 2.webp"
   },
   {
-    "id": 20,
-    "name": "El señor de los anillos 3",
-    "description": "El Señor de los Anillos: El Retorno del Rey es el tercer y último libro de la trilogía escrita por J.R.R. Tolkien, publicada en 1955. La historia culmina con la batalla final contra Sauron, donde Aragorn, Gandalf y sus aliados defienden Minas Tirith y los campos de Pelennor contra las fuerzas oscuras que amenazan la Tierra Media. Mientras tanto, Frodo Baggins y Samwise Gamgee continúan su peligrosa misión para destruir el Anillo Único en el Monte del Destino. La novela concluye con la victoria de los pueblos libres y el restablecimiento de la paz, cerrando así la épica saga y resolviendo los destinos de los personajes principales.",
-    "category": "Fantasia, Aventuras",
-    "price": 19.99,
-    "imageUrl": "/images/El señor de los anillos/El señor de los anillos 3.webp"
+    "id": 21,
+    "name": "Stranger Things",
+    "description": "dasdasd",
+    "category": "Accion",
+    "price": "22.22",
+    "imageUrl": "/uploads/1725330345619.webp"
+  },
+  {
+    "id": 21,
+    "name": "Stranger Things",
+    "description": "El king",
+    "category": "Accion",
+    "price": "22.99",
+    "imageUrl": "/uploads/1725343779959.webp"
   }
 ]

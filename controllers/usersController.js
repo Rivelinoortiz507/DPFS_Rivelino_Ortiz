@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const path = require('path');
-const fs = require('fs');
-const usersFilePath = path.join(__dirname, '../data/users.json');
+const { User } = require('../database/models'); // Asegúrate de que la ruta sea correcta
 
 // Método para renderizar el formulario de registro
 exports.getRegisterForm = (req, res) => {
@@ -9,37 +8,38 @@ exports.getRegisterForm = (req, res) => {
 };
 
 // Método para manejar el registro de un usuario
-exports.registerUser = (req, res) => {
+exports.registerUser = async (req, res) => {
   const { name, email, password, country, conditions } = req.body;
-  const profileImage = req.file ? req.file.filename : '';
+  const profileImage = req.file ? `/uploads/${req.file.filename}` : null;
 
   if (!conditions) {
     return res.status(400).send('Debes aceptar las condiciones del sitio');
   }
 
-  bcrypt.hash(password, 10, (err, hashedPassword) => {
-    if (err) {
-      return res.status(500).send('Error al encriptar la contraseña');
+  try {
+    // Verificar si el usuario ya existe
+    const existingUser = await User.findOne({ where: { email } });
+    if (existingUser) {
+      return res.status(400).send('El correo electrónico ya está en uso.');
     }
 
-    let users = [];
-    if (fs.existsSync(usersFilePath)) {
-      users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-    }
+    // Encriptar la contraseña
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = {
+    // Crear el nuevo usuario
+    await User.create({
       name,
       email,
       password: hashedPassword,
       country,
       profileImage
-    };
-
-    users.push(newUser);
-    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+    });
 
     res.redirect('/users/login');
-  });
+  } catch (error) {
+    console.error('Error registrando usuario:', error);
+    res.status(500).send('Error registrando usuario');
+  }
 };
 
 // Método para renderizar el formulario de inicio de sesión
@@ -48,37 +48,34 @@ exports.getLoginForm = (req, res) => {
 };
 
 // Método para manejar el inicio de sesión de un usuario
-exports.loginUser = (req, res) => {
+exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
     return res.status(400).send('Por favor, completa todos los campos.');
   }
 
-  let users = [];
-  if (fs.existsSync(usersFilePath)) {
-    users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-  }
+  try {
+    const user = await User.findOne({ where: { email } });
 
-  const user = users.find(user => user.email === email);
-
-  if (!user) {
-    return res.status(401).send('Correo electrónico o contraseña incorrectos.');
-  }
-
-  bcrypt.compare(password, user.password, (err, result) => {
-    if (err) {
-      return res.status(500).send('Error al comparar la contraseña.');
+    if (!user) {
+      return res.status(401).send('Correo electrónico o contraseña incorrectos.');
     }
 
+    // Comparar la contraseña proporcionada con la almacenada
+    const result = await bcrypt.compare(password, user.password);
+
     if (result) {
-      // Aquí puedes establecer la sesión del usuario
+      // Establecer la sesión del usuario
       req.session.user = user;
       res.redirect('/users/profile');
     } else {
       res.status(401).send('Correo electrónico o contraseña incorrectos.');
     }
-  });
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+    res.status(500).send('Error al iniciar sesión');
+  }
 };
 
 // Método para renderizar el perfil del usuario
