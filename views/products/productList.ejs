@@ -15,29 +15,27 @@
     </p>
 
     <main>
-        <% categories.forEach(category => { %>
-            <h2><%= category.name %></h2>
-            <div class="product-list">
-                <% category.products.forEach(product => { %>
-                    <div class="product">
-                        <h3><%= product.name %></h3>
-                        
-                        <% if (product.imageUrl) { %>
-                            <img class="product-img" src="<%= product.imageUrl %>" alt="<%= product.name %>">
-                        <% } else { %>
-                            <p>No hay imagen disponible para este producto.</p>
-                        <% } %>
+        <div class="product-list">
+            <% products.forEach(product => { %>
+                <div class="product">
+                    <h3><%= product.name %></h3>
+                    
+                    <% if (product.imageUrl) { %>
+                        <img class="product-img" src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                    <% } else { %>
+                        <p>No hay imagen disponible para este producto.</p>
+                    <% } %>
 
-                        <p>Price: $<%= product.price %></p>
-                        <a href="/products/<%= product.id %>">Ver detalles</a>
-                        <a href="/products/edit/<%= product.id %>">Editar</a>
-                        <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
-                            <button type="submit" class="btn-delete">Eliminar</button>
-                          </form>
-                    </div>
-                <% }) %>
-            </div>
-        <% }) %>
+                    <p>Price: $<%= product.price %></p>
+                    <a href="/products/<%= product.id %>">Ver detalles</a>
+                    <a href="/products/edit/<%= product.id %>">Editar</a>
+
+                    <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
+                     <button class="btn-delete"  type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?');">Eliminar</button>
+                   </form>
+                </div>
+            <% }) %>
+        </div>
     </main>
 
     <%- include('../partials/footer') %>

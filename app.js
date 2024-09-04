@@ -6,12 +6,12 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 
 // Importar rutas
-const productRoutes = require('./routes/products');
-const cartRouter = require('./routes/cart');
-const loginRoutes = require('./routes/loginRoutes');
-const registerRoutes = require('./routes/registerRoutes');
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const productRoutes = require('./routes/productRoutes');
+const usersRouter = require('./routes/usersRouter');
+const loginRoutes = require('./routes/auth/login');
+const registerRoutes = require('./routes/auth/register');
+const cartRoutes = require('./routes/cartRoutes');
+const indexRouter = require('./routes/indexRouter');
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
+
 
 // Configuración de session
 app.use(session({
@@ -38,11 +38,13 @@ app.use(session({
 app.use(methodOverride('_method'));
 
 // Rutas
-app.use('/products', productRoutes);
-app.use('/users', usersRouter);
-app.use('/auth', loginRoutes);
-app.use('/auth', registerRoutes);
-app.use('/', cartRouter);
+
+// Configurar rutas
+app.use('/products', productRoutes); 
+app.use('/users', usersRouter); 
+app.use('/auth/login', loginRoutes); 
+app.use('/auth/register', registerRoutes);
+app.use('/cart', cartRoutes);
 app.use('/', indexRouter);
 
 // Middleware para manejar errores 404

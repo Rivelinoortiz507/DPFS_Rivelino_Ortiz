@@ -152,19 +152,11 @@
     "imageUrl": "/images/El señor de los anillos/El señor de los anillos 2.webp"
   },
   {
-    "id": 21,
-    "name": "Stranger Things",
-    "description": "dasdasd",
-    "category": "Accion",
-    "price": "22.22",
-    "imageUrl": "/uploads/1725330345619.webp"
-  },
-  {
-    "id": 21,
-    "name": "Stranger Things",
-    "description": "El king",
-    "category": "Accion",
-    "price": "22.99",
-    "imageUrl": "/uploads/1725343779959.webp"
+    "id": 20,
+    "name": "El señor de los anillos 3",
+    "description": "El Retorno del Rey es el final de la trilogía El Señor de los Anillos. Frodo y Sam continúan su misión para destruir el Anillo Único, mientras Aragorn se prepara para asumir su rol como rey y liderar la lucha contra Sauron. La historia culmina en una épica batalla en los Campos del Pelennor y la destrucción del Anillo, restaurando la paz en la Tierra Media.",
+    "price": 22.5,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/El señor de los anillos/El señor de los anillos 3.webp"
   }
 ]

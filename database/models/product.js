@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../sequelize'); // Ajusta la ruta a sequelize.js
 
-const User = sequelize.define('User', {
+const Product = sequelize.define('Product', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -11,14 +11,19 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true
+  description: {
+    type: DataTypes.TEXT
+  },
+  price: {
+    type: DataTypes.FLOAT,
+    allowNull: false
+  },
+  imageUrl: {
+    type: DataTypes.STRING
   }
 }, {
-  tableName: 'users',
+  tableName: 'products',
   timestamps: false
 });
 
-module.exports = User;
+module.exports = Product;

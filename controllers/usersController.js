@@ -1,87 +1,100 @@
-const bcrypt = require('bcryptjs');
-const path = require('path');
-const { User } = require('../database/models'); // Asegúrate de que la ruta sea correcta
+const User = require('../database/models/user');
+const bcrypt = require('bcrypt');
 
-// Método para renderizar el formulario de registro
+// Mostrar el formulario de registro
 exports.getRegisterForm = (req, res) => {
-  res.render('users/register');
+    try {
+        res.render('users/register'); 
+    } catch (error) {
+        console.error('Error al obtener el formulario de registro:', error);
+        res.status(500).send('Error al obtener el formulario de registro');
+    }
 };
 
-// Método para manejar el registro de un usuario
+// Manejar el registro de usuarios
 exports.registerUser = async (req, res) => {
-  const { name, email, password, country, conditions } = req.body;
-  const profileImage = req.file ? `/uploads/${req.file.filename}` : null;
-
-  if (!conditions) {
-    return res.status(400).send('Debes aceptar las condiciones del sitio');
-  }
-
-  try {
-    // Verificar si el usuario ya existe
-    const existingUser = await User.findOne({ where: { email } });
-    if (existingUser) {
-      return res.status(400).send('El correo electrónico ya está en uso.');
+    try {
+        const { name, email, password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const profileImage = req.file ? req.file.path : null;
+        const user = await User.create({ name, email, password: hashedPassword, profileImage });
+        res.status(201).json(user);
+    } catch (error) {
+        console.error('Error al registrar el usuario:', error);
+        res.status(500).send('Error al registrar el usuario');
     }
-
-    // Encriptar la contraseña
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Crear el nuevo usuario
-    await User.create({
-      name,
-      email,
-      password: hashedPassword,
-      country,
-      profileImage
-    });
-
-    res.redirect('/users/login');
-  } catch (error) {
-    console.error('Error registrando usuario:', error);
-    res.status(500).send('Error registrando usuario');
-  }
 };
 
-// Método para renderizar el formulario de inicio de sesión
+// Mostrar el formulario de inicio de sesión
 exports.getLoginForm = (req, res) => {
-  res.render('users/login');
+    try {
+        res.render('users/login'); // Asegúrate de que esta vista exista
+    } catch (error) {
+        console.error('Error al obtener el formulario de inicio de sesión:', error);
+        res.status(500).send('Error al obtener el formulario de inicio de sesión');
+    }
 };
 
-// Método para manejar el inicio de sesión de un usuario
+// Manejar el inicio de sesión de usuarios
 exports.loginUser = async (req, res) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
-    return res.status(400).send('Por favor, completa todos los campos.');
-  }
-
-  try {
-    const user = await User.findOne({ where: { email } });
-
-    if (!user) {
-      return res.status(401).send('Correo electrónico o contraseña incorrectos.');
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ where: { email } });
+        if (!user) {
+            return res.status(404).send('Usuario no encontrado');
+        }
+        const match = await bcrypt.compare(password, user.password);
+        if (!match) {
+            return res.status(401).send('Contraseña incorrecta');
+        }
+        req.session.user = user; // Guarda el usuario en la sesión
+        res.redirect('/users/profile');
+    } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        res.status(500).send('Error al iniciar sesión');
     }
-
-    // Comparar la contraseña proporcionada con la almacenada
-    const result = await bcrypt.compare(password, user.password);
-
-    if (result) {
-      // Establecer la sesión del usuario
-      req.session.user = user;
-      res.redirect('/users/profile');
-    } else {
-      res.status(401).send('Correo electrónico o contraseña incorrectos.');
-    }
-  } catch (error) {
-    console.error('Error al iniciar sesión:', error);
-    res.status(500).send('Error al iniciar sesión');
-  }
 };
 
-// Método para renderizar el perfil del usuario
+// Mostrar el perfil del usuario
 exports.getProfile = (req, res) => {
-  if (!req.session.user) {
-    return res.redirect('/users/login');
-  }
-  res.render('users/profile', { user: req.session.user });
+    if (!req.session.user) {
+        return res.redirect('/users/login');
+    }
+    try {
+        res.render('profile', { user: req.session.user }); // Asegúrate de que esta vista exista
+    } catch (error) {
+        console.error('Error al obtener el perfil del usuario:', error);
+        res.status(500).send('Error al obtener el perfil del usuario');
+    }
+};
+
+// Leer Detalle de Usuario (CRUD)
+exports.userDetail = async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.id);
+        if (!user) {
+            return res.status(404).send('Usuario no encontrado');
+        }
+        res.json(user);
+    } catch (error) {
+        console.error('Error al obtener detalles del usuario:', error);
+        res.status(500).send('Error al obtener detalles del usuario');
+    }
+};
+
+// Actualizar Usuario (CRUD)
+exports.updateUser = async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.id);
+        if (!user) {
+            return res.status(404).send('Usuario no encontrado');
+        }
+        const { name, email, password } = req.body;
+        const hashedPassword = password ? await bcrypt.hash(password, 10) : user.password;
+        await user.update({ name, email, password: hashedPassword });
+        res.json(user);
+    } catch (error) {
+        console.error('Error al actualizar el usuario:', error);
+        res.status(500).send('Error al actualizar el usuario');
+    }
 };
