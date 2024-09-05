@@ -3,32 +3,46 @@ const bcrypt = require('bcrypt');
 
 // Mostrar el formulario de registro
 exports.getRegisterForm = (req, res) => {
-    try {
-        res.render('users/register'); 
-    } catch (error) {
-        console.error('Error al obtener el formulario de registro:', error);
-        res.status(500).send('Error al obtener el formulario de registro');
-    }
-};
+    res.render('users/register', {
+      error: req.query.error,
+      success: req.query.success
+    });
+  };
 
-// Manejar el registro de usuarios
+ // Manejar el registro de usuario
 exports.registerUser = async (req, res) => {
-    try {
-        const { name, email, password } = req.body;
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const profileImage = req.file ? req.file.path : null;
-        const user = await User.create({ name, email, password: hashedPassword, profileImage });
-        res.status(201).json(user);
-    } catch (error) {
-        console.error('Error al registrar el usuario:', error);
-        res.status(500).send('Error al registrar el usuario');
-    }
-};
+  const { name, email, password, country } = req.body;
+  const profileImage = req.file ? req.file.filename : null;
 
+  try {
+    // Verificar si el email ya está registrado
+    const existingUser = await User.findOne({ where: { email } });
+    if (existingUser) {
+      return res.redirect('/users/register?error=email_taken');
+    }
+
+    // Hash de la contraseña
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Crear un nuevo usuario
+    await User.create({
+      name,
+      email,
+      password: hashedPassword,
+      country,
+      profileImage
+    });
+
+    res.redirect('/users/register?success=registration');
+  } catch (error) {
+    console.error(error);
+    res.redirect('/users/register?error=registration_failed');
+  }
+};
 // Mostrar el formulario de inicio de sesión
 exports.getLoginForm = (req, res) => {
     try {
-        res.render('users/login'); // Asegúrate de que esta vista exista
+        res.render('users/login');
     } catch (error) {
         console.error('Error al obtener el formulario de inicio de sesión:', error);
         res.status(500).send('Error al obtener el formulario de inicio de sesión');
@@ -37,36 +51,54 @@ exports.getLoginForm = (req, res) => {
 
 // Manejar el inicio de sesión de usuarios
 exports.loginUser = async (req, res) => {
+    const { email, password } = req.body;
+  
     try {
-        const { email, password } = req.body;
-        const user = await User.findOne({ where: { email } });
-        if (!user) {
-            return res.status(404).send('Usuario no encontrado');
-        }
-        const match = await bcrypt.compare(password, user.password);
-        if (!match) {
-            return res.status(401).send('Contraseña incorrecta');
-        }
-        req.session.user = user; // Guarda el usuario en la sesión
-        res.redirect('/users/profile');
+      // Buscar usuario por email
+      const user = await User.findOne({ where: { email } });
+  
+      if (!user) {
+        // Usuario no encontrado
+        return res.render('users/login', { error: 'Usuario no encontrado' });
+      }
+  
+      // Comparar contraseñas
+      const isMatch = await bcrypt.compare(password, user.password);
+  
+      if (!isMatch) {
+        // Contraseña incorrecta
+        return res.render('users/login', { error: 'Contraseña incorrecta' });
+      }
+  
+      // Autenticación exitosa
+      req.session.userId = user.id; // Guardar el ID del usuario en la sesión
+      res.redirect('/users/profile'); // Redirigir al perfil
     } catch (error) {
-        console.error('Error al iniciar sesión:', error);
-        res.status(500).send('Error al iniciar sesión');
+      console.error('Error al iniciar sesión:', error);
+      res.render('users/login', { error: 'Error en el servidor' });
     }
-};
+  };
 
 // Mostrar el perfil del usuario
-exports.getProfile = (req, res) => {
-    if (!req.session.user) {
-        return res.redirect('/users/login');
-    }
+
+exports.getProfile = async (req, res) => {
     try {
-        res.render('profile', { user: req.session.user }); // Asegúrate de que esta vista exista
+      if (!req.session.userId) {
+        return res.redirect('/users/login'); // Redirigir al login si no está autenticado
+      }
+  
+      const user = await User.findByPk(req.session.userId);
+  
+      if (!user) {
+        return res.redirect('/users/login'); // Redirigir al login si el usuario no se encuentra
+      }
+  
+      res.render('users/profile', { user });
     } catch (error) {
-        console.error('Error al obtener el perfil del usuario:', error);
-        res.status(500).send('Error al obtener el perfil del usuario');
+      console.error('Error al mostrar perfil:', error);
+      res.redirect('/users/login'); // Redirigir al login en caso de error
     }
-};
+  };
 
 // Leer Detalle de Usuario (CRUD)
 exports.userDetail = async (req, res) => {
@@ -98,3 +130,4 @@ exports.updateUser = async (req, res) => {
         res.status(500).send('Error al actualizar el usuario');
     }
 };
+

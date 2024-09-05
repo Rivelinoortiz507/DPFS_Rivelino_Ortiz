@@ -11,5 +11,6 @@ router.get('/edit/:id', productsController.showEditProductForm);
 router.put('/:id', upload.single('image'), productsController.updateProduct);
 router.post('/:id/edit', productsController.updateProduct); 
 router.delete('/:id', productsController.deleteProduct);
+router.get('/search', productsController.searchProducts);
 
 module.exports = router;

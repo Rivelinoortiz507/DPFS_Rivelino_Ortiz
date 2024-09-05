@@ -24,15 +24,11 @@
         <input type="number" id="price" name="price" step="0.01" value="<%= product.price %>" required>
 
         <button type="submit">Actualizar Producto</button>
+        <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit" class="btn-delete">Eliminar</button>
+            <a class="volver" href="/products">Volver</a>
+        </form>
     </form>
-    
-    <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
-        <button type="submit" class="btn-danger">Eliminar</button>
-    </form>
-
-    <br>
-
-    <a class="volver" href="/products">Volver a la lista de productos</a>
 
     <%- include('../partials/footer') %>
 </body>

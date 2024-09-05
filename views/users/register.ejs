@@ -5,6 +5,23 @@
 </head>
 
 <body>
+  <% if (error === 'email_taken') { %>
+    <div class="error">
+      El correo electrónico ya está en uso.
+    </div>
+  <% } %>
+  
+  <% if (error === 'registration_failed') { %>
+    <div class="error">
+      Hubo un error al registrar el usuario.
+    </div>
+  <% } %>
+
+  <% if (success === 'registration') { %>
+    <div class="success">
+      Registro exitoso. Puedes iniciar sesión.
+    </div>
+  <% } %>
 
 <%- include('../partials/header') %>
 
@@ -16,9 +33,13 @@
         <input type="password" name="password" placeholder="Contraseña" required>
         <label for="pais">Selecciona tu país:
           <select name="country" id="pais" required>
-            <option value="panama">Panamá</option>
-            <option value="colombia">Colombia</option>
-            <!-- Añadir más opciones según sea necesario -->
+            <option value="">Selecciona un país</option>
+            <option value="Panamá">Panamá</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Perú">Perú</option>
+            <option value="Cuba">Cuba</option>
           </select>
         </label>
         <p>Acepto las condiciones del sitio</p> 

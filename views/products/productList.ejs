@@ -27,8 +27,8 @@
                     <% } %>
 
                     <p>Price: $<%= product.price %></p>
-                    <a href="/products/<%= product.id %>">Ver detalles</a>
-                    <a href="/products/edit/<%= product.id %>">Editar</a>
+                    <a class="btn-detalles" href="/products/<%= product.id %>">Ver detalles</a>
+                    <a class="btn-edit" href="/products/edit/<%= product.id %>">Editar</a>
 
                     <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
                      <button class="btn-delete"  type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?');">Eliminar</button>

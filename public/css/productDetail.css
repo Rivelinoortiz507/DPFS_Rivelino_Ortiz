@@ -26,18 +26,106 @@ header {
     width: 250px;
     height: 30px;
     border-radius: 10px;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
-a {
-    font-size: 18px;
-    color: rgb(230, 230, 230);
-    padding-left: 30px;
+nav {
+    padding: 10px;
+  }
+  
+  .nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  
+  .nav-links li {
+    position: relative;
+  }
+  
+  .nav-links a {
+    color: white;
     text-decoration: none;
-}
+    padding: 12px 16px;
+    display: block;
+    transition: background-color 0.4s ease;
+  }
+  
+  .nav-links a:hover {
+    background-color: #6c6e6e;
+    border-radius: 4px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropbtn {
+    background-color: #007bff; 
+    color: white; 
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.4s ease;
+  }
+  
+  .dropbtn:hover {
+    background-color: #0b6cd4; 
+  }
+  
+  .cart a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 16px;
+    display: block;
+    font-size: 18px; 
+  }
+  
+  .cart a:hover {
+    background-color:  #727070;
+    border-radius: 4px;
+  }
+  
+
 
 h1{
+    margin-top: 50px;
     text-align: center;
+    font-size: 28px;
+    background: linear-gradient(to right, #4B0000, #8B4500, #8B7500, #006400, #00008B, #2F004F, #4B0082);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 
@@ -65,7 +153,7 @@ main {
 
 img{
     width: 180px;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .image{
@@ -86,10 +174,13 @@ img{
 
 .volver{
     color: black;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 20px;
 }
 
 .add-to-cart {
-    background-color: #28a745;
+    background-color: #029424;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -97,25 +188,26 @@ img{
     width: 600px;
     cursor: pointer;
     font-size: 16px;
-    transition: .5s all ease;
+    transition: 0.3s all ease-in-out;
 }
 
 .add-to-cart:hover {
-    background-color: #218838;
+    background-color: #016d1a;
 }
 
 .edit{
-    background-color: #28a745;
+    background-color: #2b2dc5;
+    text-decoration: none;
     color: #fff;
-    padding: 6px;
+    padding: 8px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-    transition: .5s all ease;
+    transition: 0.3s all ease-in-out;
 }
 .edit:hover {
-    background-color: #218838;
+    background-color: #1a1c9c;
 }
 
 .btn-delete{
@@ -127,7 +219,7 @@ img{
     border-radius: 5px;
     cursor: pointer;
     margin: 10px;
-    transition: .5s all ease;
+    transition: 0.3s all ease-in-out;
   }
   
   .btn-delete:hover{

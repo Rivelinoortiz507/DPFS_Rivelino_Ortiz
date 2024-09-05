@@ -144,3 +144,42 @@ exports.deleteProduct = async (req, res) => {
     }
 };
 
+exports.searchProducts = (req, res) => {
+    const query = req.query.query.toLowerCase();
+    const products = [
+        { name: 'Producto 1', description: 'Descripción 1' },
+        { name: 'Producto 2', description: 'Descripción 2' },
+        // Otros productos...
+    ];
+
+    const results = products.filter(product => 
+        product.name.toLowerCase().includes(query) || 
+        product.description.toLowerCase().includes(query)
+    );
+
+    res.render('searchResults', { results, query });
+};
+
+exports.searchProducts = (req, res) => {
+    // Obtener el término de búsqueda de la consulta
+    const searchTerm = req.query.q;
+    
+    if (!searchTerm) {
+        // Si no se proporciona término de búsqueda, redirigir o devolver todos los productos
+        return res.redirect('/products'); // O puedes devolver una respuesta vacía
+    }
+    
+    // Usar parámetros para evitar inyección SQL
+    const sql = 'SELECT * FROM products WHERE name LIKE ?';
+    const query = `%${searchTerm}%`;
+    
+    db.query(sql, [query], (err, results) => {
+        if (err) {
+            // Manejar errores de consulta
+            return res.status(500).json({ error: 'Error al realizar la búsqueda' });
+        }
+        
+        // Renderizar la vista de productos con los resultados
+        res.render('productList', { products: results });
+    });
+};

@@ -26,30 +26,28 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 // Configuración de session
 app.use(session({
   secret: 'your-secret-key', // Cambia esto por una clave secreta más segura
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: { secure: false } // Cambia esto a true si usas HTTPS
 }));
 
 // Configuración de method-override
 app.use(methodOverride('_method'));
 
 // Rutas
-
-// Configurar rutas
-app.use('/products', productRoutes); 
-app.use('/users', usersRouter); 
-app.use('/auth/login', loginRoutes); 
+app.use('/products', productRoutes);
+app.use('/users', usersRouter);
+app.use('/auth/login', loginRoutes);
 app.use('/auth/register', registerRoutes);
 app.use('/cart', cartRoutes);
 app.use('/', indexRouter);
 
 // Middleware para manejar errores 404
 app.use((req, res, next) => {
-  res.status(404).send('Not Found');
+  res.status(404).render('error', { message: 'Not Found' });
 });
 
 // Middleware para manejar errores
@@ -57,8 +55,7 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', { message: err.message, error: res.locals.error });
 });
-
 
 module.exports = app;

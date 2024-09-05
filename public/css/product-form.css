@@ -6,54 +6,136 @@ body {
     background-color: #f4f4f4;
 }
 
-.search{
 
-}
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-content: space-around;
-    align-items: center;
-    background-color: rgb(72, 132, 155);
-    height: 90px;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: space-around;
+  align-items: center;
+  background-color: rgb(72, 132, 155);
+  height: 90px;
+}
 
-  .buscador {
-    width: 250px;
-    height: 30px;
-    border-radius: 10px;
-    padding-left: 10px;
-    }
-    
-  .links a {
-    font-size: 18px;
-    color: rgb(247, 216, 216);
-    padding-left: 30px;
-    text-decoration: none;
+
+
+.buscador {
+  width: 250px;
+  height: 30px;
+  border-radius: 10px;
+  padding-left: 3px;
   }
   
+
+
+  nav {
+    padding: 10px;
+  }
   
-  .cart{
-    font-size: 24px;
+  .nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  
+  .nav-links li {
+    position: relative;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 16px;
+    display: block;
+    transition: background-color 0.4s ease;
+  }
+  
+  .nav-links a:hover {
+    background-color: rgba(81, 145, 173, 0.61);
+    border-radius: 4px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropbtn {
+    background-color: rgba(75, 154, 185, 0.589);
+    color: white; 
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
     cursor: pointer;
+    border-radius: 4px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.5s ease;
   }
   
-  a{
-    color: black;
-    text-decoration: none;
+  .dropbtn:hover {
+    background-color: rgba(98, 174, 207, 0.568);
   }
+  
+  .cart a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 16px;
+    display: block;
+    font-size: 18px;
+  }
+  
+  .cart a:hover {
+    background-color: rgba(81, 145, 173, 0.61);
+    border-radius: 4px;
+  }
+  
 
 h1 {
     text-align: center;
-    color: #333;
-    margin-top: 20px;
+    margin-top: 50px;
+    font-size: 24px;
+    background: linear-gradient(to right, #4B0000, #8B4500, #8B7500, #006400, #00008B, #2F004F, #4B0082);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.volver{
+  color: black;
+  text-decoration: none;
 }
 
 
-form {
-    max-width: 600px;
+.principal-form {
+    max-width: 40%;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
@@ -86,20 +168,35 @@ textarea {
 button {
     display: inline-block;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
-    background-color: #007bff;
+    background-color: #2b2dc5;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease-in-out;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #1a1c9c;
 }
 
+.btn-delete{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #d31414;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
 
+.btn-delete:hover{
+  background-color: #b31a1a;
+}
+  
 footer {
     display: flex;
     flex-direction: row;

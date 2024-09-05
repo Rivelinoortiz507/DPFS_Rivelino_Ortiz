@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%- include('../partials/head') %>
+
+<link rel="stylesheet" href="/css/profile.css">
+
   <title>Perfil de Usuario</title>
-  <link rel="stylesheet" href="/css/profile.css">
 </head>
+
+<%- include('../partials/header') %>
+
 <body>
   <div class="profile-container">
     <div class="profile-header">
       <% if (user.profileImage) { %>
         <div class="profile-image-container">
-          <img src="/images/<%= user.profileImage %>" alt="Imagen de perfil">
+          <img src="/uploads/<%= user.profileImage %>" alt="Imagen de perfil">
         </div>
       <% } else { %>
         <div class="profile-image-container">
@@ -28,5 +29,8 @@
       <a href="/users/logout" class="logout-button">Cerrar sesión</a>
     </div>
   </div>
+
+  <%- include('../partials/footer') %>
+
 </body>
 </html>
