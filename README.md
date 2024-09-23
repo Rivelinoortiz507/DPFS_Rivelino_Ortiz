@@ -14,3 +14,10 @@ las preferencias y el historial de compras del usuario. Además, mantenemos prec
 Descripción Personal Hola, que tal? soy desarrollador full stack con experiencia en la creación de aplicaciones web utilizando Node.js y React. 
 Estoy apasionado por el desarrollo de interfaces de usuario atractivas y funcionales que mejoren la experiencia del usuario. Este proyecto representa 
 una excelente oportunidad para aplicar mis habilidades y aprender más sobre la implementación de e-commerce, desde la planificación hasta la ejecución.
+
+Listado de referentes:
+- Planeta de libros
+- Penguin Libros
+- Casa del Libro
+- La vanguardia
+- Happy Books
