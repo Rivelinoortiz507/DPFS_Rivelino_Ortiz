@@ -1,0 +1,36 @@
+<%- include('../partials/head') %>
+
+<link rel="stylesheet" href="/css/profile.css">
+
+  <title>Perfil de Usuario</title>
+</head>
+
+<%- include('../partials/header') %>
+
+<body>
+  <div class="profile-container">
+    <div class="profile-header">
+      <% if (user.profileImage) { %>
+        <div class="profile-image-container">
+          <img src="/uploads/<%= user.profileImage %>" alt="Imagen de perfil">
+        </div>
+      <% } else { %>
+        <div class="profile-image-container">
+          <img src="/images/default-profile.png" alt="Imagen de perfil" class="profile-image">
+        </div>
+      <% } %>
+      <h1 class="profile-name"><%= user.name %></h1>
+    </div>
+    <div class="profile-info">
+      <p><label>Email:</label> <%= user.email %></p>
+      <p><label>País:</label> <%= user.country %></p>
+    </div>
+    <div class="profile-footer">
+      <a href="/users/logout" class="logout-button">Cerrar sesión</a>
+    </div>
+  </div>
+
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

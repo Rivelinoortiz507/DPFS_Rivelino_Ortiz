@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Harry Potter 1",
+    "description": "Harry Potter y la piedra filosofal cuenta la historia de un niño huérfano que, al cumplir 11 años, descubre que es un mago y es invitado a asistir al Colegio Hogwarts de Magia y Hechicería. Allí, Harry Potter se hace amigo de Ron Weasley y Hermione Granger, y juntos enfrentan desafíos, incluyendo la protección de la Piedra Filosofal, un poderoso objeto que el oscuro mago Lord Voldemort desea para recuperar su fuerza. El libro mezcla aventura, magia, y la lucha entre el bien y el mal, sentando las bases para la saga completa.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Harry Potter/Harry potter 1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Harry Potter 2",
+    "description": "Harry Potter y la cámara secreta es el segundo libro de la serie escrita por J.K. Rowling. Publicado en 1998, sigue las aventuras de Harry Potter en su segundo año en el Colegio Hogwarts de Magia y Hechicería. En esta entrega, Harry descubre que alguien ha abierto la mítica Cámara Secreta, liberando un monstruo que convierte a los estudiantes en piedra. Con la ayuda de sus amigos, Ron Weasley y Hermione Granger, Harry intenta desentrañar el misterio detrás de la cámara y su conexión con el oscuro pasado de Hogwarts, enfrentándose nuevamente a peligros mortales y a su enemigo Lord Voldemort. El libro explora temas como la identidad, la herencia y la valentía.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Harry Potter/Harry potter 2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Harry Potter 3",
+    "description": "Harry Potter y el Prisionero de Azkaban En el tercer libro de la serie, Harry Potter regresa a su tercer año en Hogwarts mientras la noticia de la fuga de Sirius Black, un peligroso prisionero de Azkaban, se extiende. Se dice que Sirius Black está buscando a Harry, y el joven mago debe enfrentarse a nuevos desafíos, incluidos los temidos Dementores que custodian la escuela. A lo largo del año, Harry descubre secretos sobre su pasado y la verdadera historia detrás de la traición de sus padres. La novela explora temas de lealtad y redención, y presenta personajes nuevos como Remus Lupin y los gemelos Weasley, quienes añaden más profundidad al mundo mágico.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Harry potter/Harry potter 3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Harry Potter 4",
+    "description": "El cuarto libro de la serie Harry Potter es Harry Potter y el Cáliz de Fuego. En esta entrega, Harry Potter regresa a su cuarto año en el Colegio Hogwarts de Magia y Hechicería. La historia se centra en el Torneo de los Tres Magos, un evento mágico de gran prestigio en el que participan tres escuelas de magia: Hogwarts, Beauxbatons y Durmstrang. Harry, inesperadamente, se convierte en uno de los campeones de Hogwarts, a pesar de ser menor de edad. A lo largo del torneo, enfrenta desafíos peligrosos y desentraña una conspiración que lleva al resurgimiento del oscuro mago Lord Voldemort.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Harry Potter/Harry potter 4.gif"
+  },
+  {
+    "id": 5,
+    "name": "Harry Potter 5",
+    "description": "Harry Potter y la Orden del Fénix es el quinto libro de la serie escrita por J.K. Rowling, publicado en 2003. En esta entrega, Harry Potter regresa a su quinto año en Hogwarts en medio de una creciente amenaza de Lord Voldemort, cuyo regreso es negado por el Ministerio de Magia. Harry se enfrenta a la frustración y la impotencia mientras el Ministerio intenta desacreditarlo y controlar Hogwarts a través de la nueva profesora, Dolores Umbridge, cuyo régimen tiránico y cruel genera resistencia entre los estudiantes. Harry, junto con sus amigos, funda 'El Ejército de Dumbledore', un grupo secreto para aprender defensa contra las artes oscuras. Este libro profundiza en temas como la resistencia contra la opresión, la importancia de la verdad y la carga emocional de la lucha contra el mal.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Harry Potter/Harry potter 5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Harry Potter 6",
+    "description": "Harry Potter regresa a su sexto año en Hogwarts mientras la amenaza de Lord Voldemort crece. Con la ayuda de Dumbledore, Harry explora el pasado de Voldemort y descubre la existencia de Horrocruxes, objetos en los que Voldemort ha escondido fragmentos de su alma. La relación entre Harry y Ginny se fortalece, pero el año se vuelve trágico cuando Dumbledore es asesinado por Severus Snape, el misterioso Príncipe Mestizo. Harry se prepara para enfrentar la batalla final contra el malvado mago.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Harry Potter/Harry potter 6.jpeg"
+  },
+  {
+    "id": 7,
+    "name": "Harry Potter 7",
+    "description": "En el último libro de la saga, Harry Potter y sus amigos, Ron y Hermione, dejan Hogwarts para buscar y destruir los Horrocruxes restantes de Lord Voldemort. Mientras viajan, descubren los secretos de las Reliquias de la Muerte, tres objetos mágicos poderosos. La búsqueda los lleva a enfrentarse a numerosos peligros y finalmente a una batalla épica en Hogwarts. Harry descubre la verdad sobre su conexión con Voldemort y debe hacer sacrificios personales para salvar el mundo mágico. La historia culmina con la derrota de Voldemort y un epílogo que muestra el futuro de los personajes principales.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Harry Potter/Harry potter 7.jpeg"
+  },
+  {
+    "id": 8,
+    "name": "Las Crónicas de Narnia 1",
+    "description": "Crónicas de Narnia: El León, la Bruja y el Ropero: En el primer libro de la serie Crónicas de Narnia, cuatro hermanos—Pedro, Susana, Edmund y Lucía—son evacuados a una mansión en el campo durante la Segunda Guerra Mundial. Allí descubren un ropero que los transporta a Narnia, un mundo encantado sumido en el invierno eterno bajo el poder de la Bruja Blanca. Con la ayuda del león Aslan, símbolo de la verdadera realeza y la esperanza, deben enfrentarse a la tiranía de la bruja, liberar a Narnia de su hechizo y restaurar la paz y el orden en el reino.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Las Crónicas de Narnia/1.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Las Crónicas de Narnia 2",
+    "description": "El príncipe Caspian es el segundo libro publicado de Las crónicas de Narnia de C.S. Lewis, lanzado en 1951. En esta historia, los hermanos Pevensie regresan a Narnia para encontrar que el reino está bajo la ocupación de los Telmarinos, liderados por el malvado Rey Miraz. Caspian, el legítimo heredero al trono de Narnia, ha sido criado en secreto y ha huido para buscar ayuda. Con la ayuda de los Pevensie, Caspian reúne a los antiguos habitantes de Narnia para luchar contra Miraz y reclamar su trono. La historia se centra en la valentía, la justicia y la restauración de la paz en Narnia.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Las Crónicas de Narnia/2.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Las Crónicas de Narnia 3",
+    "description": "La travesía del Viajero del Alba es el tercer libro publicado de Las crónicas de Narnia de C.S. Lewis, lanzado en 1952. En esta aventura, los hermanos Edmund y Lucy Pevensie, junto con su primo Eustace Scrubb, son transportados nuevamente a Narnia a bordo del barco Viajero del Alba, comandado por el príncipe Caspian. Su misión es encontrar los siete lores desaparecidos de Narnia, quienes han sido exiliados por el malvado rey Miraz. A lo largo del viaje, enfrentan diversas pruebas, encuentran islas misteriosas y descubren la verdad sobre Eustace y su propio crecimiento personal. La historia explora temas de redención, coraje y el poder de la transformación.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Las Crónicas de Narnia/3.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Las Crónicas de Narnia 4",
+    "description": "El caballo y su niño es el cuarto libro publicado de Las crónicas de Narnia de C.S. Lewis, lanzado en 1954. La historia sigue a Shasta, un joven que ha vivido como esclavo en el reino de Calormen, y a Bree, un caballo que también es un noble caballo parlante de Narnia. Juntos, huyen hacia el norte para escapar de la tiranía del Calormen y llegar a Narnia. Durante su viaje, descubren secretos sobre sus propios pasados y enfrentan numerosos peligros. La novela aborda temas de libertad, identidad y la importancia de seguir el camino correcto.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Las Crónicas de Narnia/4.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Las Crónicas de Narnia 5",
+    "description": "La silla de plata es el quinto libro publicado de Las crónicas de Narnia de C.S. Lewis, lanzado en 1953. En esta aventura, los personajes principales, Eustace Scrubb y su amiga Jill Pole, son llamados a Narnia para rescatar al príncipe Rilian, quien ha desaparecido mientras busca venganza por la muerte de su padre. Con la ayuda del enigmático Puddleglum, un Marshwiggle, y enfrentándose a las tentaciones de la malvada bruja verde, los protagonistas deben atravesar varios desafíos en su misión para salvar a Narnia. La historia trata temas de valentía, la lucha contra la opresión y la redención.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Las Crónicas de Narnia/5.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Las Crónicas de Narnia 6",
+    "description": "Eustace Scrubb y su amiga Jill Pole son transportados a Narnia para ayudar a encontrar al príncipe Rilian, quien ha desaparecido mientras buscaba vengar a su padre, el rey Caspian. Pronto descubren que el príncipe ha sido capturado y está bajo el hechizo de una bruja en una silla de plata mágica que lo controla. Con la ayuda del valiente Puddleglum, un habitante de los pantanos, Eustace y Jill enfrentan varios desafíos en su búsqueda. Finalmente, logran romper el hechizo, liberar al príncipe y restaurar el orden en Narnia.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Las Crónicas de Narnia/6.webp"
+  },
+  {
+    "id": 14,
+    "name": "Las Crónicas de Narnia 7",
+    "description": "La última batalla es el séptimo y último libro de Las crónicas de Narnia de C.S. Lewis, lanzado en 1956. La historia se centra en la última batalla de Narnia, donde un falso Aslan, creado por el malvado mono Shift, engaña a los habitantes de Narnia y lleva al reino hacia la destrucción. Los verdaderos leones luchan para restaurar la verdad y la justicia en Narnia, mientras el mundo se enfrenta a su fin y al amanecer de un nuevo comienzo. Este libro explora el fin de una era, el juicio final y la esperanza de una nueva realidad.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Las Crónicas de Narnia/7.webp"
+  },
+  {
+    "id": 15,
+    "name": "Peter pan 1",
+    "description": "Peter Pan es un libro escrito por J.M. Barrie, publicado en 1911. La historia sigue a Peter Pan, un niño que puede volar y que vive en el País de Nunca Jamás, un lugar mágico donde los niños no crecen. Peter lleva a Wendy Darling y a sus hermanos, John y Michael, a su mundo fantástico, donde luchan contra el malvado Capitán Garfio y sus piratas. La historia explora temas de infancia, aventura y la resistencia a la madurez, mientras Peter y los niños viven emocionantes peripecias y descubren el valor de la amistad y el hogar.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Peter Pan/Peter pan 1.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Peter pan 2",
+    "description": "La historia narra cómo Peter Pan, un niño que puede volar y nunca crece, llega a Kensington Gardens, donde se convierte en el rey de las hadas. En este entorno mágico, Peter conoce a diversos personajes, incluyendo a la Hada Campanita. El libro explora el origen de Peter Pan y cómo se convierte en el niño que nunca crece, mostrando sus primeras aventuras y su relación con el mundo mágico que habita.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Peter Pan/Peter pan 2.png"
+  },
+  {
+    "id": 17,
+    "name": "Peter pan 3",
+    "description": "Peter Pan y los Niños Perdidos es una sección del libro Peter Pan de J.M. Barrie, en el que Peter Pan lleva a Wendy Darling y a sus hermanos, John y Michael, al País de Nunca Jamás. En este mundo mágico, los niños se encuentran con los Niños Perdidos y enfrentan al malvado Capitán Garfio y sus piratas. La historia se centra en las aventuras y desafíos que enfrentan mientras exploran el país encantado y defienden la justicia. A lo largo de la trama, se exploran temas como la eterna juventud, la valentía y el valor de la amistad, mientras Peter y sus amigos viven emocionantes peripecias en un entorno lleno de fantasía y peligro.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/Peter Pan/Peter pan 3.jpg"
+  },
+  {
+    "id": 18,
+    "name": "El señor de los anillos 1",
+    "description": "El Hobbit es el primer libro relacionado con la saga de El Señor de los Anillos de J.R.R. Tolkien. Publicado en 1937, narra la historia de Bilbo Baggins, un hobbit que vive una vida tranquila en la Comarca hasta que el mago Gandalf y un grupo de enanos lo reclutan para una aventura. Su misión es recuperar el tesoro robado por Smaug, un dragón que ha tomado posesión de la Montaña Solitaria. Durante su viaje, Bilbo enfrenta peligros, hace nuevos amigos y encuentra el Anillo Único, un objeto mágico que juega un papel crucial en la historia de El Señor de los Anillos.",
+    "price": 19.99,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/El señor de los anillos/El señor de los anillos 1.webp"
+  },
+  {
+    "id": 19,
+    "name": "El señor de los anillos 2",
+    "description": "Las Dos Torres es el segundo libro de El Señor de los Anillos de J.R.R. Tolkien, publicado en 1954. La historia sigue a Frodo y Sam en su viaje hacia el Monte del Destino para destruir el Anillo Único, con Gollum como su guía. Paralelamente, Aragorn, Legolas y Gimli buscan a los hobbits Merry y Pippin, quienes han sido capturados por orcos. La trama se centra en la lucha contra el mago Saruman y las fuerzas oscuras que amenazan la Tierra Media, mientras las alianzas y batallas se intensifican.",
+    "price": 22.5,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/El señor de los anillos/El señor de los anillos 2.webp"
+  },
+  {
+    "id": 20,
+    "name": "El señor de los anillos 3",
+    "description": "El Retorno del Rey es el final de la trilogía El Señor de los Anillos. Frodo y Sam continúan su misión para destruir el Anillo Único, mientras Aragorn se prepara para asumir su rol como rey y liderar la lucha contra Sauron. La historia culmina en una épica batalla en los Campos del Pelennor y la destrucción del Anillo, restaurando la paz en la Tierra Media.",
+    "price": 22.5,
+    "category": "Fantasia, Aventura",
+    "imageUrl": "/images/El señor de los anillos/El señor de los anillos 3.webp"
+  }
+]

@@ -1,0 +1,38 @@
+<%- include('../partials/head') %>
+
+<link rel="stylesheet" href="/css/product-form.css">
+
+<%- include('../partials/header') %>
+</head>
+<body>
+    <div class="edit-intro">
+        <h2>Actualiza los detalles de tu producto y mantén nuestro catálogo al día</h2>
+        <p>En esta sección podrás modificar la información de un producto existente en nuestra tienda. Actualiza los campos necesarios, como el nombre, la descripción, el precio y la imagen, para asegurarte de que la información sea precisa y actual. Este proceso te permite ajustar los detalles del producto según las necesidades y comentarios de nuestros clientes. ¡Gracias por tu esfuerzo en mantener nuestra oferta siempre relevante y atractiva!</p>
+    </div>
+    <form class="principal-form" action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <input class="input" type="hidden" name="_method" value="PUT">   
+        <label for="name">Nombre del Producto:</label>
+        <input class="input" type="text" id="name" name="name" value="<%= product.name %>" required>
+
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" required><%= product.description %></textarea>
+
+        <label for="image">Imagen:</label>
+        <input class="input" type="file" id="image" name="image" accept="image/">
+        <% if (product.imageUrl) { %>
+            <img src="<%= product.imageUrl %>" alt="Imagen actual" style="max-width: 200px;">
+        <% } %>
+
+        <label for="price">Precio:</label>
+        <input class="input" type="number" id="price" name="price" step="0.01" value="<%= product.price %>" required>
+
+        <button type="submit">Actualizar Producto</button>
+        <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit" class="btn-delete">Eliminar</button>
+            <a class="volver" href="/products">Volver</a>
+        </form>
+    </form>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

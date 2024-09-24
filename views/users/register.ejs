@@ -1,0 +1,58 @@
+<%- include('../partials/head') %>
+
+<link rel="stylesheet" href="/css/auth.css">
+<title>Registro</title>
+</head>
+
+<body>
+  <% if (error === 'email_taken') { %>
+    <div class="error">
+      El correo electrónico ya está en uso.
+    </div>
+  <% } %>
+  
+  <% if (error === 'registration_failed') { %>
+    <div class="error">
+      Hubo un error al registrar el usuario.
+    </div>
+  <% } %>
+
+  <% if (success === 'registration') { %>
+    <div class="success">
+      Registro exitoso. Puedes iniciar sesión.
+    </div>
+  <% } %>
+
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h1>Crear una cuenta</h1>
+    <form action="/users/register" method="POST" enctype="multipart/form-data">
+        <input class="input" type="text" name="name" placeholder="Nombre" required>
+        <input class="input" type="email" name="email" placeholder="Correo" required>
+        <input class="input" type="password" name="password" placeholder="Contraseña" required>
+        <label for="pais">Selecciona tu país:
+          <select name="country" id="pais" required>
+            <option value="">Selecciona un país</option>
+            <option value="Panamá">Panamá</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Perú">Perú</option>
+            <option value="Cuba">Cuba</option>
+          </select>
+        </label>
+        <p>Acepto las condiciones del sitio</p> 
+        <input type="checkbox" name="conditions" required>
+        <br>
+        <label for="profileImage">Sube tu imagen de perfil:</label>
+        <br>
+        <input type="file" name="profileImage" id="profileImage">
+        <button class="btn-inicio" type="submit">Crear cuenta</button>
+      </form>
+</div>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

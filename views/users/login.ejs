@@ -1,0 +1,24 @@
+<%- include('../partials/head') %>
+
+    <link rel="stylesheet" href="/css/auth.css">
+    
+    <title>Login</title>
+</head>
+
+<%- include('../partials/header') %>
+
+<body>
+
+    <div class="container">
+        <h1>Iniciar Sección</h1>
+        <form action="/users/login" method="POST">
+            <input class="input" type="email" name="email" placeholder="Correo" required>
+            <input class="input"  type="password" name="password" placeholder="Contraseña" required>
+            <button class="btn-inicio" type="submit">Iniciar sesión</button>
+          </form>
+    </div>
+
+    <%- include('../partials/footer') %>
+    
+</body>
+</html>

@@ -1,0 +1,90 @@
+<%- include('partials/head') %>
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <%- include('partials/header') %>
+
+  <div>
+    <img class="banner" src="/images/Banner.png" alt="banner">
+</div>
+
+<p class="p-principal">
+    Ya seas un veterano del género o un aventurero curioso en busca de su próxima gran lectura,
+    Fantasy Books está aquí para guiarte en tu viaje a través de las páginas de la fantasía.
+</p>
+
+<main>
+    <h1>Más Vendidos:</h1>
+    <section>
+        <% const products = [
+            { id: 4, name: 'Las Crónicas de Narnia 4', imageUrl: '/images/Las Crónicas de Narnia/4.jpg', price: 19.99 },
+            { id: 18, name: 'El señor de los anillos 1', imageUrl: '/images/El señor de los anillos/El señor de los anillos 1.webp', price: 19.99 },
+            { id: 3, name: 'Harry Potter 3', imageUrl: '/images/Harry Potter/Harry potter 3.jpg', price: 19.99 },
+            { id: 4, name: 'Harry Potter 4', imageUrl: '/images/Harry Potter/Harry potter 4.gif', price: 19.99 },
+            { id: 16, name: 'Peter pan 2', imageUrl: '/images/Peter Pan/Peter pan 2.png', price: 19.99 }
+        ]; %>
+
+        <% products.forEach(product => { %>
+        <article>
+            <img src="<%= product.imageUrl %>" alt="<%= product.name %>" class="product-img">
+            <div class="libro-precio">
+                <p><%= product.name %></p>
+                <hr>
+                <p>$<%= product.price %></p>
+                <a href="/products/<%= product.id %>" class="añadir-carrito-btn">Ver detalle</a>
+            </div>
+        </article>
+        <% }); %>
+    </section>
+
+    <!-- Segunda seccion -->
+    <h1>Ofertas Especiales:</h1>
+    <section>
+        <% const specialOffers = [
+            { id: 7, name: 'Harry Potter 7', imageUrl: '/images/Harry Potter/Harry potter 7.jpeg', price: 12.99 },
+            { id: 20, name: 'El señor de los anillos 3', imageUrl: '/images/El señor de los anillos/El señor de los anillos 3.webp', price: 12.99 },
+            { id: 4, name: 'Harry Potter 4', imageUrl: '/images/Harry Potter/Harry potter 4.gif', price: 12.99 },
+            { id: 11, name: 'Las Crónicas de Narnia 4', imageUrl: '/images/Las Crónicas de Narnia/4.jpg', price: 12.99 },
+            { id: 17, name: 'Peter pan 3', imageUrl: '/images/Peter Pan/Peter pan 3.jpg', price: 12.99 }
+        ]; %>
+
+        <% specialOffers.forEach(product => { %>
+        <article>
+            <img src="<%= product.imageUrl %>" alt="<%= product.name %>" class="product-img">
+            <div class="libro-precio">
+                <p><%= product.name %></p>
+                <hr>
+                <p>$<%= product.price %></p>
+                <a href="/products/<%= product.id %>" class="añadir-carrito-btn">Ver detalle</a>
+            </div>
+        </article>
+        <% }); %>
+    </section>
+    
+    <div class="quienes-somos">
+        <h1>¿Quiénes somos?</h1>
+        <p>Fantasy Books es un refugio para todos aquellos que creen en la magia de las palabras y los mundos
+            más allá de lo visible. Nacimos del amor por la literatura fantástica, por las historias que nos
+            transportan
+            a reinos lejanos, donde la imaginación no tiene límites y cada página es un portal a aventuras épicas.
+        </p>
+        <br>
+        <p>Somos apasionados lectores y coleccionistas de los más grandes relatos de fantasía, desde los clásicos
+            que forjaron el género hasta las nuevas voces que están redefiniendo sus fronteras.
+            Nuestro objetivo es compartir con nuestros lectores la maravilla y el asombro que sentimos al explorar
+            tierras misteriosas, enfrentarnos a criaturas míticas y descubrir héroes inesperados.
+        </p>
+        <br>
+        <p>
+            En Fantasy Books, creemos que los libros son más que simples historias: son viajes, experiencias y,
+            sobre todo, magia pura. Queremos ser el puente que te conecta con los mundos que siempre has
+            soñado, ofreciéndote una cuidada selección de libros que despierten tu imaginación
+            y te inviten a soñar despierto.
+        </p>
+    </div>
+</main>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,77 @@
+<%- include('partials/head') %>
+<link rel="stylesheet" href="/css/productCart.css">
+</head>
+
+<body>
+    <%- include('partials/header') %>
+    
+    <h1>Carrito de compras</h1>
+    
+    <div class="cart-container">
+        <% if (cart.length > 0) { %>
+            <ul>
+                <% cart.forEach(item => { %>
+                    <li class="cart-item">
+                        <img src="<%= item.product.imageUrl %>" alt="<%= item.product.name %>" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <strong><%= item.product.name %></strong>
+                            <p>Precio: $<%= Number(item.product.price).toFixed(2) %></p>
+                            <form action="/cart/update" method="POST" class="update-form">
+                                <input type="hidden" name="productId" value="<%= item.product.id %>">
+                                <label for="quantity">Cantidad:</label>
+                                <input class="cantidad-input" type="number" name="quantity" value="<%= item.quantity %>" min="1" required onchange="updateTotal()">
+                            </form>
+                            <form action="/cart/remove" method="POST" class="remove-form">
+                                <input type="hidden" name="productId" value="<%= item.product.id %>">
+                                <button class="btn-delete" type="submit">Eliminar</button>
+                            </form>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+            <form action="/cart/clear" method="POST" class="clear-cart-form">
+                <button class="clear" type="submit">Vaciar carrito</button>
+            </form>
+
+            <% 
+                // Calcular total de productos
+                const total = cart.reduce((sum, item) => sum + (Number(item.product.price) * item.quantity), 0); 
+                const itbms = total * 0.07; 
+                const grandTotal = total + itbms; 
+            %>
+            
+            <div class="cart-summary">
+                <h2>Total a pagar</h2>
+                <div id="total">Subtotal: $<%= total.toFixed(2) %></div>
+                <div id="itbms">ITBMS (7%): $<%= itbms.toFixed(2) %></div>
+                <div id="grand-total"><strong>Total: $<%= grandTotal.toFixed(2) %></strong></div>
+                <button class="checkout-btn">Pagar</button>
+            </div>
+
+        <% } else { %>
+            <p>Tu carrito está vacío.</p>
+        <% } %>
+    </div>
+
+    <script>
+        function updateTotal() {
+            let total = 0;
+            const cartItems = document.querySelectorAll('.cart-item');
+            
+            cartItems.forEach(item => {
+                const price = parseFloat(item.querySelector('.cart-item-details p').innerText.replace('Precio: $', ''));
+                const quantity = parseInt(item.querySelector('input[name="quantity"]').value);
+                total += price * quantity;
+            });
+
+            const itbms = total * 0.07;
+            const grandTotal = total + itbms;
+
+            document.getElementById('total').innerText = 'Total: $' + total.toFixed(2);
+            document.getElementById('itbms').innerText = 'ITBMS (7%): $' + itbms.toFixed(2);
+            document.getElementById('grand-total').innerHTML = '<strong>Total a Pagar: $' + grandTotal.toFixed(2) + '</strong>';
+        }
+    </script>
+
+    <%- include('partials/footer') %>
+</body>
