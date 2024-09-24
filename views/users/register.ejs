@@ -28,9 +28,9 @@
 <div class="container">
     <h1>Crear una cuenta</h1>
     <form action="/users/register" method="POST" enctype="multipart/form-data">
-        <input type="text" name="name" placeholder="Nombre" required>
-        <input type="email" name="email" placeholder="Correo" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
+        <input class="input" type="text" name="name" placeholder="Nombre" required>
+        <input class="input" type="email" name="email" placeholder="Correo" required>
+        <input class="input" type="password" name="password" placeholder="Contraseña" required>
         <label for="pais">Selecciona tu país:
           <select name="country" id="pais" required>
             <option value="">Selecciona un país</option>
@@ -44,9 +44,11 @@
         </label>
         <p>Acepto las condiciones del sitio</p> 
         <input type="checkbox" name="conditions" required>
+        <br>
         <label for="profileImage">Sube tu imagen de perfil:</label>
+        <br>
         <input type="file" name="profileImage" id="profileImage">
-        <button type="submit">Crear cuenta</button>
+        <button class="btn-inicio" type="submit">Crear cuenta</button>
       </form>
 </div>
 

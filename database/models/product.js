@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../../sequelize'); // Ajusta la ruta a sequelize.js
+const sequelize = require('../../sequelize'); 
 
 const Product = sequelize.define('Product', {
   id: {

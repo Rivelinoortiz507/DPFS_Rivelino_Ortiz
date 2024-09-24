@@ -1,40 +1,40 @@
 <%- include('../partials/head') %>
 
-    <link rel="stylesheet" href="/css/productDetail.css">    
-    </head>
+<link rel="stylesheet" href="/css/productDetail.css">
+</head>
 
-    <body>
+<body>
 
-        <%- include('../partials/header') %>
-        <h1>Detalles del Producto</h1>
-
-            <main>
-             
-                <div class="product-detail">
-                    <img class="product-img" src="<%= product.imageUrl %>" alt="<%= product.name %>">
-                    <div>
-                        <h2>
-                            <%= product.name %>
-                        </h2>
-                        <p class="description">
-                            <%= product.description %>
-                        </p>
-                        <p class="price">Precio: $<%= product.price %>
-                        </p>
-                        <button class="add-to-cart">Añadir al carrito</button>
-                        <a class="edit" href="/products/edit/<%= product.id %>">Editar</a>
-                        <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
-                            <button type="submit" class="btn-delete">Eliminar</button>
-                          </form>
-                    </div>
-                </div>
-                <a class="volver" href="/products">Volver  </a>
-            </main>
-  
-
-            <script src="/javascripts/productDetail.js" defer></script>
-    </body>
+    <%- include('../partials/header') %>
+    <h1>Detalles del Producto</h1>
+    <div id="message" style="display:none; position:fixed; top:20px; right:50px; background-color:rgba(0, 128, 0, 0.8); color:white; padding:10px; border-radius:5px; z-index:1000;"></div>
 
 
+    <main>
+        <div class="product-detail">
+            <img class="product-img" src="<%= product.imageUrl %>" alt="<%= product.name %>">
+            <div>
+                <h2><%= product.name %></h2>
+                <p class="description"><%= product.description %></p>
+                <p class="price">Precio: $<%= product.price %></p>
 
-    <%- include('../partials/footer') %>
+                <!-- Formulario para añadir al carrito -->
+                <form id="add-to-cart-form" action="/cart/add" method="POST" style="display:inline;">
+                    <input type="hidden" name="productId" value="<%= product._id %>">
+                    <button class="add-to-cart" data-product-id="<%= product.id %>" data-product-name="<%= product.name %>" data-product-price="<%= product.price %>">Añadir al carrito</button>
+
+                </form>
+
+                <a class="edit" href="/products/edit/<%= product.id %>">Editar</a>
+                <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit" class="btn-delete">Eliminar</button>
+                </form>
+            </div>
+        </div>
+        <a class="volver" href="/products">Volver</a>
+    </main>
+
+    <script src="/javascripts/productDetail.js" defer></script>
+</body>
+
+<%- include('../partials/footer') %>

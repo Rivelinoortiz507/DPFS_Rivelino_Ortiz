@@ -12,24 +12,66 @@ body {
 }
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-content: space-around;
-    align-items: center;
-    background-color: rgb(72, 132, 155);
-    height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: space-around;
+  align-items: center;
+  background-color: rgb(72, 132, 155);
+  height: 90px;
 }
 
 
-.buscador {
-    width: 250px;
-    height: 30px;
-    border-radius: 10px;
-    padding-left: 5px;
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
 }
 
-nav {
+
+.search-container input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.search-container input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  border: 2px solid #e7e5e5;
+  background-color: #029424;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin-left: -1px; 
+}
+
+.search-container button:hover {
+  background-color: #016d1a;
+}
+
+
+.btn-search{
+  width: 20%;
+  height: 40px;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+
+
+  nav {
     padding: 10px;
   }
   
@@ -55,7 +97,7 @@ nav {
   }
   
   .nav-links a:hover {
-    background-color: #6c6e6e;
+    background-color: rgba(81, 145, 173, 0.61);
     border-radius: 4px;
   }
   
@@ -88,20 +130,21 @@ nav {
   }
   
   .dropbtn {
-    background-color: #007bff; 
+    background-color: rgba(75, 154, 185, 0.589);
     color: white; 
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     cursor: pointer;
     border-radius: 4px;
+    margin-left: 10px;
     display: flex;
     align-items: center;
-    transition: background-color 0.4s ease;
+    transition: background-color 0.5s ease;
   }
   
   .dropbtn:hover {
-    background-color: #0b6cd4; 
+    background-color: rgba(98, 174, 207, 0.568);
   }
   
   .cart a {
@@ -109,18 +152,19 @@ nav {
     text-decoration: none;
     padding: 12px 16px;
     display: block;
-    font-size: 18px; 
+    font-size: 18px;
+    margin-left: 10px;
   }
   
   .cart a:hover {
-    background-color:  #727070;
+    background-color: rgba(81, 145, 173, 0.61);
     border-radius: 4px;
   }
   
 
 
 h1{
-    margin-top: 50px;
+    margin-top: 20px;
     text-align: center;
     font-size: 28px;
     background: linear-gradient(to right, #4B0000, #8B4500, #8B7500, #006400, #00008B, #2F004F, #4B0082);
@@ -130,7 +174,7 @@ h1{
 
 
 main {
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -219,7 +263,7 @@ img{
     border-radius: 5px;
     cursor: pointer;
     margin: 10px;
-    transition: 0.3s all ease-in-out;
+    transition: 0.3s all ease;
   }
   
   .btn-delete:hover{

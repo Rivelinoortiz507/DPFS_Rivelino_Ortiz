@@ -1,6 +1,6 @@
 <header>
     <img class="logo" src="/images/Logos/Logo Fantasy Book.png" width="80px" height="80px" alt="logo">
-    <form action="/products/search" method="get">
+    <form action="/products/search" method="GET" class="search-container">
         <input type="text" name="query" placeholder="Buscar productos..." required>
         <button type="submit">Buscar</button>
     </form>
@@ -8,11 +8,7 @@
         <ul class="nav-links">
             <li><a href="/">Inicio</a></li>
             <li><a href="/products">Libros</a></li>
-            <li class="cart">
-                <a href="/cart">
-                    <i class="fas fa-shopping-cart"></i> 
-                </a>
-            </li>
+
             <li class="dropdown">
                 <button class="dropbtn">
                     <i class="fas fa-user"></i>
@@ -22,6 +18,11 @@
                     <a href="/users/register">Register</a>
                     <a href="/users/login">Login</a>
                 </div>
+                <li class="cart">
+                    <a href="/cart">
+                        <i class="fas fa-shopping-cart"></i> 
+                    </a>
+                </li>
             </li>    
         </ul>
     </nav>

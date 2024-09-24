@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const methodOverride = require('method-override');
+const { addToCart } = require('./controllers/cartController');
 
 // Importar rutas
 const productRoutes = require('./routes/productRoutes');
@@ -47,15 +48,18 @@ app.use('/', indexRouter);
 
 // Middleware para manejar errores 404
 app.use((req, res, next) => {
-  res.status(404).render('error', { message: 'Not Found' });
+  res.status(404);
+  res.render('error', { message: 'Not Found', error: {} });
 });
 
 // Middleware para manejar errores
 app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // Renderiza la página de error
   res.status(err.status || 500);
-  res.render('error', { message: err.message, error: res.locals.error });
+  res.render('error', { message: res.locals.message, error: res.locals.error });
 });
 
 module.exports = app;

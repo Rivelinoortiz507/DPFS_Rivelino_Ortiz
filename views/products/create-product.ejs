@@ -5,19 +5,22 @@
 <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>Crear Nuevo Producto</h1>
+    <div class="creation-intro">
+        <h2>¡Crea un nuevo producto y expande nuestro catálogo!</h2>
+        <p>Aquí podrás agregar un nuevo producto a nuestra tienda. Completa los campos necesarios con la información del producto, incluyendo el nombre, la descripción, el precio y una imagen atractiva. Asegúrate de que todos los detalles sean correctos para ofrecer a nuestros clientes la mejor experiencia de compra posible. ¡Estamos emocionados de ver qué nuevos productos agregarás!</p>
+    </div>
     <form class="principal-form" action="/products" method="POST" enctype="multipart/form-data">
         <label for="name">Nombre del Producto:</label>
-        <input type="text" id="name" name="name" required>
+        <input class="input" type="text" id="name" name="name" required>
 
         <label for="description">Descripción:</label>
         <textarea id="description" name="description" required></textarea>
 
         <label for="image">Imagen:</label>
-        <input type="file" id="image" name="image" accept="image/*">
+        <input class="input" type="file" id="image" name="image" accept="image/*">
 
         <label for="price">Precio:</label>
-        <input type="number" id="price" name="price" step="0.01" required>
+        <input class="input" type="number" id="price" name="price" step="0.01" required>
 
         <button type="submit">Crear Producto</button>
         <a class="volver" href="/products">Volver</a>
