@@ -15,6 +15,7 @@ las preferencias y el historial de compras del usuario. Además, mantenemos prec
 Descripción Personal Hola, que tal? soy desarrollador full stack con experiencia en la creación de aplicaciones web utilizando Node.js y React. 
 Estoy apasionado por el desarrollo de interfaces de usuario atractivas y funcionales que mejoren la experiencia del usuario. Este proyecto representa 
 una excelente oportunidad para aplicar mis habilidades y aprender más sobre la implementación de e-commerce, desde la planificación hasta la ejecución.
+<<<<<<< HEAD
 =======
 Buenas, este es una parte de mi proyecto final Fantasy Books, lastimosamente no pude completarlo para el momento de la entrega, es algo muy dificl realizar una pagina web una sola persona, sin embargo, siento que 
 para 1 semana y 4 dias que estuve realizando este proyecto pude avanzar bastante y sobre todo aprender muchisimo, cuando comence este curso era un novato, no sabia absolutamente nada sobre programacion y hoy
@@ -26,3 +27,12 @@ a mi tiempo y a mis gustos personales, espero qu esta version incompleta les gus
 
 saludos a todos los que vean este proyecto!
 >>>>>>> master
+=======
+
+Listado de referentes:
+- Planeta de libros
+- Penguin Libros
+- Casa del Libro
+- La vanguardia
+- Happy Books
+>>>>>>> f599e9bd3f91f1a071fed46515d4138b884d1a53
