@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # DPFS_Rivelino_Ortiz
 Proyecto final Fullstack
 
@@ -21,7 +20,19 @@ Listado de referentes:
 - Penguin Libros
 - Casa del Libro
 - La vanguardia
+
+"Tablero de Trabajo"
+
+breve del propósito del tablero.
+
+Enlace al tablero de trabajo actualizado.
+https://trello.com/b/zw4LcTbg/proyecto-fantasy-books
+
+<<<<<<< HEAD
 - Happy Books.
 
 
+=======
+- Happy Books
+>>>>>>> 9fb515503631423c1f786159b562ce926308a7aa
 
