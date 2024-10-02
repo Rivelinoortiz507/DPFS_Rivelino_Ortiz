@@ -1,4 +1,4 @@
-const Product = require('../database/models/product');
+const { Product } = require('../sequelize'); 
 
 // Mostrar el carrito
 exports.showCart = (req, res) => {
@@ -50,7 +50,7 @@ exports.removeFromCart = (req, res) => {
     let cart = req.session.cart || [];
 
     // Filtra el carrito para eliminar el producto con el ID especificado
-    cart = cart.filter(item => item.product.id !== productId);
+    cart = cart.filter(item => item.product.id.toString() !== productId.toString());
     req.session.cart = cart;
 
     res.redirect('/cart');

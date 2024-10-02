@@ -1,3 +1,182 @@
 [
-
-]
+    {
+      "id": 1,
+      "name": "Mary Parks",
+      "email": "bwang@garcia.com",
+      "password": "nw4MG@fcM^",
+      "country": "Switzerland",
+      "createdAt": "2024-09-15T09:10:39",
+      "updatedAt": "2024-07-13T06:06:02"
+    },
+    {
+      "id": 2,
+      "name": "Nicole Boyle",
+      "email": "wtravis@yahoo.com",
+      "password": "#oW*6JmR%m",
+      "country": "Germany",
+      "createdAt": "2024-07-03T11:06:51",
+      "updatedAt": "2024-03-24T00:27:37"
+    },
+    {
+      "id": 3,
+      "name": "Connor Miller",
+      "email": "blakeangela@pierce.com",
+      "password": "&0nZWuXjMA",
+      "country": "Cook Islands",
+      "createdAt": "2024-05-09T09:46:12",
+      "updatedAt": "2024-07-22T11:23:02"
+    },
+    {
+      "id": 4,
+      "name": "Brittany Campbell",
+      "email": "amandalane@daniels.info",
+      "password": "+(P0%yCnGf",
+      "country": "Libyan Arab Jamahiriya",
+      "createdAt": "2024-01-12T16:09:50",
+      "updatedAt": "2024-09-01T15:59:31"
+    },
+    {
+      "id": 5,
+      "name": "Jessica Payne",
+      "email": "gcarr@green.org",
+      "password": "#0HkmZMq8R",
+      "country": "Libyan Arab Jamahiriya",
+      "createdAt": "2024-04-27T02:50:03",
+      "updatedAt": "2024-05-25T21:52:08"
+    },
+    {
+      "id": 6,
+      "name": "Linda Miller",
+      "email": "michael94@gmail.com",
+      "password": "(E7vd6EpuY",
+      "country": "Chile",
+      "createdAt": "2024-04-17T17:25:44",
+      "updatedAt": "2024-03-05T21:20:04"
+    },
+    {
+      "id": 7,
+      "name": "Krystal Anderson",
+      "email": "ggoodman@gmail.com",
+      "password": ")!kGsLd09I",
+      "country": "Bermuda",
+      "createdAt": "2024-05-31T23:06:48",
+      "updatedAt": "2024-06-30T16:18:55"
+    },
+    {
+      "id": 8,
+      "name": "Angela Jones",
+      "email": "nicole18@williams.com",
+      "password": "m_63cSMzC0",
+      "country": "Guatemala",
+      "createdAt": "2024-07-29T17:29:01",
+      "updatedAt": "2024-03-27T19:33:57"
+    },
+    {
+      "id": 9,
+      "name": "Daniel Rice",
+      "email": "manuelgibson@hotmail.com",
+      "password": "_e9KCwgAy*",
+      "country": "Switzerland",
+      "createdAt": "2024-02-22T15:33:19",
+      "updatedAt": "2024-09-01T14:40:44"
+    },
+    {
+      "id": 10,
+      "name": "Christy Perkins",
+      "email": "brucelong@yahoo.com",
+      "password": "4e53r&Bk)1",
+      "country": "Saudi Arabia",
+      "createdAt": "2024-09-24T07:49:30",
+      "updatedAt": "2024-08-18T10:19:15"
+    },
+    {
+      "id": 11,
+      "name": "Joshua Flores",
+      "email": "sarahellis@yahoo.com",
+      "password": "_p11NA(n$X",
+      "country": "Guadeloupe",
+      "createdAt": "2024-01-09T15:02:13",
+      "updatedAt": "2024-09-15T13:57:57"
+    },
+    {
+      "id": 12,
+      "name": "Luke Smith",
+      "email": "hicksrobert@hotmail.com",
+      "password": "S6A4$5Kn^K",
+      "country": "Venezuela",
+      "createdAt": "2024-01-05T01:40:44",
+      "updatedAt": "2024-03-21T14:12:01"
+    },
+    {
+      "id": 13,
+      "name": "Victor Simpson",
+      "email": "jessica75@dean-hernandez.com",
+      "password": "it##6UAr^z",
+      "country": "Angola",
+      "createdAt": "2024-05-31T23:06:18",
+      "updatedAt": "2024-06-14T01:19:44"
+    },
+    {
+      "id": 14,
+      "name": "Austin Reyes",
+      "email": "pattersonkent@bolton-olson.com",
+      "password": "7NyWTTmM!&",
+      "country": "Northern Mariana Islands",
+      "createdAt": "2024-07-04T23:34:47",
+      "updatedAt": "2024-08-25T03:22:37"
+    },
+    {
+      "id": 15,
+      "name": "Charles Davis",
+      "email": "daniel36@yahoo.com",
+      "password": "_38LKA+Sxe",
+      "country": "Puerto Rico",
+      "createdAt": "2024-02-21T15:43:55",
+      "updatedAt": "2024-02-25T03:50:24"
+    },
+    {
+      "id": 16,
+      "name": "Traci Ballard",
+      "email": "melissa83@gmail.com",
+      "password": "$#$Tg(Pxa4",
+      "country": "Finland",
+      "createdAt": "2024-08-09T20:05:42",
+      "updatedAt": "2024-04-08T08:35:16"
+    },
+    {
+      "id": 17,
+      "name": "Vanessa Ross",
+      "email": "patelstacy@lang-ruiz.biz",
+      "password": "*_4g*Ejt0a",
+      "country": "Cape Verde",
+      "createdAt": "2024-01-18T19:44:10",
+      "updatedAt": "2024-09-20T12:26:13"
+    },
+    {
+      "id": 18,
+      "name": "Rebecca Miles",
+      "email": "duransuzanne@yahoo.com",
+      "password": "BX%KPmVZ@0",
+      "country": "Northern Mariana Islands",
+      "createdAt": "2024-06-28T23:07:31",
+      "updatedAt": "2024-01-24T23:10:02"
+    },
+    {
+      "id": 19,
+      "name": "Maria Hutchinson",
+      "email": "kburton@lynch.com",
+      "password": "f6kRM9OD%m",
+      "country": "South Africa",
+      "createdAt": "2024-09-14T23:48:39",
+      "updatedAt": "2024-02-13T07:43:34"
+    },
+    {
+      "id": 20,
+      "name": "Christina Martinez",
+      "email": "howardbarnett@kirk-elliott.com",
+      "password": "6(71rSsaAe",
+      "country": "Pakistan",
+      "createdAt": "2024-03-24T02:02:26",
+      "updatedAt": "2024-07-31T14:46:06"
+    }
+  ]

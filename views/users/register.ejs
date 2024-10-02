@@ -31,6 +31,7 @@
         <input class="input" type="text" name="name" placeholder="Nombre" required>
         <input class="input" type="email" name="email" placeholder="Correo" required>
         <input class="input" type="password" name="password" placeholder="Contraseña" required>
+        
         <label for="pais">Selecciona tu país:
           <select name="country" id="pais" required>
             <option value="">Selecciona un país</option>
@@ -42,14 +43,21 @@
             <option value="Cuba">Cuba</option>
           </select>
         </label>
-        <p>Acepto las condiciones del sitio</p> 
-        <input type="checkbox" name="conditions" required>
+        
+        <label>
+          <br>
+          <input type="checkbox" name="terminos"> Acepto terminos y condiciones
+      </label>
         <br>
+        <br>
+        
         <label for="profileImage">Sube tu imagen de perfil:</label>
-        <br>
-        <input type="file" name="profileImage" id="profileImage">
+        <input type="file" name="profileImage" id="profileImage" accept="image/*">
+        
+        <br><br>
+        
         <button class="btn-inicio" type="submit">Crear cuenta</button>
-      </form>
+    </form>
 </div>
 
 <%- include('../partials/footer') %>

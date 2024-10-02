@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize('booksdb', 'root', '2751356junior', {
   host: 'localhost',
   dialect: 'mysql',
-  logging: false // Opcional, puedes activarlo si deseas ver las consultas SQL
+  logging: false
 });
 
 sequelize.authenticate()
@@ -14,4 +14,13 @@ sequelize.authenticate()
     console.error('No se pudo conectar a la base de datos:', err);
   });
 
-module.exports = sequelize;
+// Importa los modelos
+const Product = require('./database/models/product')(sequelize, Sequelize.DataTypes);
+const Category = require('./database/models/category')(sequelize, Sequelize.DataTypes);
+const User = require('./database/models/user')(sequelize, Sequelize.DataTypes);
+
+// Asocia los modelos
+Product.associate({ Category });
+Category.associate({ Product });
+
+module.exports = { sequelize, Product, Category, User };

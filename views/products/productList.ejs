@@ -16,6 +16,14 @@
         Desde épicas aventuras hasta mágicas leyendas, hay un libro esperando por ti.
     </p>
 
+    <p class="categoria">
+        Fantasias
+    </p>
+
+    <% if (user) { %>
+        <a class="crear-producto" href="/products/create">Crear nuevo producto</a>
+      <% } %>
+
     <main>
         <div class="product-list">
             <% if (typeof message !== 'undefined' && message) { %>

@@ -15,12 +15,18 @@
 
         <label for="description">Descripción:</label>
         <textarea id="description" name="description" required></textarea>
-
+        
+        <label for="category">Categoría:</label>
+        <select id="category" name="categoryId" required>
+            <option value="1" selected>Fantasías</option>
+        </select>
+        
         <label for="image">Imagen:</label>
-        <input class="input" type="file" id="image" name="image" accept="image/*">
+        <input type="file" name="image" required> 
 
         <label for="price">Precio:</label>
         <input class="input" type="number" id="price" name="price" step="0.01" required>
+
 
         <button type="submit">Crear Producto</button>
         <a class="volver" href="/products">Volver</a>

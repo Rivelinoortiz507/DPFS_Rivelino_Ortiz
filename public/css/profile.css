@@ -224,6 +224,10 @@ header {
   .logout-button:hover {
     background-color: #b10101;
   }
+
+  #message{
+    padding-top: 10px;
+  }
   
   footer {
     display: flex;

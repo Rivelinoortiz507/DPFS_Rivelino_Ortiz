@@ -1,4 +1,4 @@
-const User = require('../database/models/user');
+const { User } = require('../sequelize'); 
 const bcrypt = require('bcrypt');
 
 // Mostrar el formulario de registro
@@ -10,77 +10,87 @@ exports.getRegisterForm = (req, res) => {
   };
 
  // Manejar el registro de usuario
-exports.registerUser = async (req, res) => {
+ exports.register = async (req, res) => {
   const { name, email, password, country } = req.body;
-  const profileImage = req.file ? req.file.filename : null;
+  const profileImage = req.file ? req.file.filename : null; // Manejo de imagen
 
   try {
-    // Verificar si el email ya está registrado
+    // Verifica si el email ya existe
     const existingUser = await User.findOne({ where: { email } });
+
     if (existingUser) {
-      return res.redirect('/users/register?error=email_taken');
+      return res.render('users/register', {
+        error: 'email_taken',
+        success: null // No hay éxito
+      });
     }
 
-    // Hash de la contraseña
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // Encriptar la contraseña antes de guardarla
+    const hashedPassword = await bcrypt.hash(password, 10); // 10 es el número de saltos
 
-    // Crear un nuevo usuario
+    // Crear el nuevo usuario
     await User.create({
       name,
       email,
-      password: hashedPassword,
+      password: hashedPassword, // Guarda la contraseña encriptada
       country,
-      profileImage
+      profileImageUrl: profileImage // Guardar la URL de la imagen
     });
 
-    res.redirect('/users/register?success=registration');
+    res.render('users/register', {
+      success: 'registration', // Mensaje de éxito
+      error: null // No hay error
+    });
   } catch (error) {
-    console.error(error);
-    res.redirect('/users/register?error=registration_failed');
+    console.error('Error al registrar usuario:', error);
+    res.render('users/register', {
+      error: 'registration_failed', // Mensaje de error genérico
+      success: null // No hay éxito
+    });
   }
 };
-// Mostrar el formulario de inicio de sesión
+
+
+// Mostrar el formulario de login sin errores
 exports.getLoginForm = (req, res) => {
-    try {
-        res.render('users/login');
-    } catch (error) {
-        console.error('Error al obtener el formulario de inicio de sesión:', error);
-        res.status(500).send('Error al obtener el formulario de inicio de sesión');
-    }
+  res.render('users/login', { errorMessage: null, email: '' });
 };
 
-// Manejar el inicio de sesión de usuarios
+
 exports.loginUser = async (req, res) => {
-    const { email, password } = req.body;
-  
-    try {
-      // Buscar usuario por email
+  const { email, password, rememberMe } = req.body; // Incluye rememberMe
+
+  try {
       const user = await User.findOne({ where: { email } });
-  
-      if (!user) {
-        // Usuario no encontrado
-        return res.render('users/login', { error: 'Usuario no encontrado' });
+
+      if (!user || !(await bcrypt.compare(password, user.password))) {
+          // Mensaje genérico para ambos casos
+          return res.render('users/login', { 
+              errorMessage: 'Credenciales incorrectas', 
+              email: email // Enviar el email ingresado para mantenerlo en el formulario
+          });
       }
-  
-      // Comparar contraseñas
-      const isMatch = await bcrypt.compare(password, user.password);
-  
-      if (!isMatch) {
-        // Contraseña incorrecta
-        return res.render('users/login', { error: 'Contraseña incorrecta' });
-      }
-  
+
       // Autenticación exitosa
       req.session.userId = user.id; // Guardar el ID del usuario en la sesión
+
+      // Establecer cookie si "Recordarme" está seleccionado
+      if (rememberMe) {
+          res.cookie('userId', user.id, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true }); 
+      }
+
       res.redirect('/users/profile'); // Redirigir al perfil
-    } catch (error) {
+  } catch (error) {
       console.error('Error al iniciar sesión:', error);
-      res.render('users/login', { error: 'Error en el servidor' });
-    }
-  };
+      res.render('users/login', { 
+          errorMessage: 'Error en el servidor',
+          email: email // Enviar el email ingresado para mantenerlo en el formulario
+      });
+  }
+};
+
 
 // Mostrar el perfil del usuario
-
 exports.getProfile = async (req, res) => {
     try {
       if (!req.session.userId) {
@@ -100,34 +110,15 @@ exports.getProfile = async (req, res) => {
     }
   };
 
-// Leer Detalle de Usuario (CRUD)
-exports.userDetail = async (req, res) => {
-    try {
-        const user = await User.findByPk(req.params.id);
-        if (!user) {
-            return res.status(404).send('Usuario no encontrado');
-        }
-        res.json(user);
-    } catch (error) {
-        console.error('Error al obtener detalles del usuario:', error);
-        res.status(500).send('Error al obtener detalles del usuario');
-    }
-};
+  exports.logout = (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('Error al cerrar sesión:', err);
+        return res.status(500).send('Error al cerrar sesión');
+      }
+      res.send('Sesión cerrada con éxito'); 
+    });
+  };
 
-// Actualizar Usuario (CRUD)
-exports.updateUser = async (req, res) => {
-    try {
-        const user = await User.findByPk(req.params.id);
-        if (!user) {
-            return res.status(404).send('Usuario no encontrado');
-        }
-        const { name, email, password } = req.body;
-        const hashedPassword = password ? await bcrypt.hash(password, 10) : user.password;
-        await user.update({ name, email, password: hashedPassword });
-        res.json(user);
-    } catch (error) {
-        console.error('Error al actualizar el usuario:', error);
-        res.status(500).send('Error al actualizar el usuario');
-    }
-};
+
 

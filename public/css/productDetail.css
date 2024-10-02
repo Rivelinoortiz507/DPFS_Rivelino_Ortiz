@@ -240,7 +240,7 @@ img{
 }
 
 .edit{
-    background-color: #2b2dc5;
+  background-color: #0364a5;
     text-decoration: none;
     color: #fff;
     padding: 8px;
@@ -251,7 +251,7 @@ img{
     transition: 0.3s all ease-in-out;
 }
 .edit:hover {
-    background-color: #1a1c9c;
+  background-color: #024e81;
 }
 
 .btn-delete{

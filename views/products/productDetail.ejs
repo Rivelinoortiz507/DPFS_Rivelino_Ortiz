@@ -18,11 +18,10 @@
                 <p class="description"><%= product.description %></p>
                 <p class="price">Precio: $<%= product.price %></p>
 
-                <!-- Formulario para añadir al carrito -->
+            
                 <form id="add-to-cart-form" action="/cart/add" method="POST" style="display:inline;">
                     <input type="hidden" name="productId" value="<%= product._id %>">
                     <button class="add-to-cart" data-product-id="<%= product.id %>" data-product-name="<%= product.name %>" data-product-price="<%= product.price %>">Añadir al carrito</button>
-
                 </form>
 
                 <a class="edit" href="/products/edit/<%= product.id %>">Editar</a>

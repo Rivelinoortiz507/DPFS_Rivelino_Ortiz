@@ -230,3 +230,12 @@
     color: rgb(230, 230, 230);
     margin-top: 100px;
   }
+
+  .error-message {
+    color: red;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }

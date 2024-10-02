@@ -1,8 +1,7 @@
 <%- include('../partials/head') %>
 
 <link rel="stylesheet" href="/css/profile.css">
-
-  <title>Perfil de Usuario</title>
+<title>Perfil de Usuario</title>
 </head>
 
 <%- include('../partials/header') %>
@@ -10,24 +9,47 @@
 <body>
   <div class="profile-container">
     <div class="profile-header">
-      <% if (user.profileImage) { %>
+      <% if (user.profileImageUrl) { %>
         <div class="profile-image-container">
-          <img src="/uploads/<%= user.profileImage %>" alt="Imagen de perfil">
+          <img src="/images/profiles/<%= user.profileImageUrl %>" alt="Imagen de perfil" class="profile-image">
         </div>
       <% } else { %>
         <div class="profile-image-container">
           <img src="/images/default-profile.png" alt="Imagen de perfil" class="profile-image">
         </div>
       <% } %>
+      
       <h1 class="profile-name"><%= user.name %></h1>
     </div>
+    
     <div class="profile-info">
       <p><label>Email:</label> <%= user.email %></p>
       <p><label>País:</label> <%= user.country %></p>
     </div>
+    
     <div class="profile-footer">
-      <a href="/users/logout" class="logout-button">Cerrar sesión</a>
+      <button id="logout-btn" class="logout-button">Cerrar sesión</button>
+      <div id="message" class="logout-message"></div>
     </div>
+    
+    <script>
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        fetch('/users/logout', {
+          method: 'POST',
+        })
+        .then(response => response.text())
+        .then(message => {
+          document.getElementById('message').innerText = message; // Muestra el mensaje de éxito
+          setTimeout(() => {
+            window.location.href = '/'; // Redirige a la página de inicio después de unos segundos
+          }, 2000); // Cambia el tiempo según tus necesidades
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('message').innerText = 'Hubo un error al cerrar sesión.';
+        });
+      });
+    </script>
   </div>
 
   <%- include('../partials/footer') %>

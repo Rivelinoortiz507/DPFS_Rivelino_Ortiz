@@ -178,6 +178,28 @@ header {
     padding: 0 15%;
     text-align: center;
   }
+
+  .categoria{
+   text-align: center;
+   font-size: 32px;
+   background: linear-gradient(to right, #4B0000, #8B4500, #8B7500, #006400, #00008B, #2F004F, #4B0082);
+   -webkit-background-clip: text;
+   color: transparent;
+  }
+
+  .crear-producto{
+    background-color: #007bff;
+    margin-left: 82px;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: .4s all ease;
+  }
+
+  .crear-producto:hover{
+    background-color: #0264cc;
+  }
   
   main {
     width: 90%;
@@ -258,7 +280,7 @@ header {
   font-size: 14px;
   margin: 3px;
   color: #fff;
-  background-color: #2b2dc5;
+  background-color: #0364a5;
   padding: 2px;
   border-radius: 5px;
   text-decoration: none;
@@ -266,7 +288,7 @@ header {
 }
 
 .btn-edit:hover{
-background-color: #1a1c9c;
+  background-color: #024e81;
 }
 
   

@@ -6,7 +6,8 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const { addToCart } = require('./controllers/cartController');
 
-// Importar rutas
+
+
 const productRoutes = require('./routes/productRoutes');
 const usersRouter = require('./routes/usersRouter');
 const loginRoutes = require('./routes/auth/login');
@@ -16,7 +17,7 @@ const indexRouter = require('./routes/indexRouter');
 
 const app = express();
 
-// Configuración de vistas
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -27,13 +28,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Configuración de session
+
+// Configuración de sesiones
 app.use(session({
-  secret: 'your-secret-key', // Cambia esto por una clave secreta más segura
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false } // Cambia esto a true si usas HTTPS
+    secret: '2751356junior', 
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } 
 }));
+
+app.use((req, res, next) => {
+  res.locals.user = req.session.userId || null; // Si el usuario está logueado, se guarda su ID en la sesión
+  next();
+});
 
 // Configuración de method-override
 app.use(methodOverride('_method'));
@@ -45,6 +52,7 @@ app.use('/auth/login', loginRoutes);
 app.use('/auth/register', registerRoutes);
 app.use('/cart', cartRoutes);
 app.use('/', indexRouter);
+
 
 // Middleware para manejar errores 404
 app.use((req, res, next) => {
