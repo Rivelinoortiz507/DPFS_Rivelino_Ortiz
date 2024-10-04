@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     categoryId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     }
   }, {
     timestamps: false // Si no deseas createdAt y updatedAt

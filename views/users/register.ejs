@@ -1,66 +1,109 @@
 <%- include('../partials/head') %>
-
 <link rel="stylesheet" href="/css/auth.css">
 <title>Registro</title>
 </head>
 
 <body>
-  <% if (error === 'email_taken') { %>
-    <div class="error">
-      El correo electrónico ya está en uso.
-    </div>
-  <% } %>
-  
-  <% if (error === 'registration_failed') { %>
-    <div class="error">
-      Hubo un error al registrar el usuario.
-    </div>
-  <% } %>
+  <%- include('../partials/header') %>
 
-  <% if (success === 'registration') { %>
-    <div class="success">
-      Registro exitoso. Puedes iniciar sesión.
-    </div>
-  <% } %>
-
-<%- include('../partials/header') %>
-
-<div class="container">
+  <div class="container">
     <h1>Crear una cuenta</h1>
-    <form action="/users/register" method="POST" enctype="multipart/form-data">
+
+    <% if (success === 'registration') { %>
+      <div class="success">
+        Registro exitoso. Puedes iniciar sesión.
+      </div>
+    <% } %>
+
+    <div id="errorMessages" class="error-messages" style="display: none;"></div>
+
+    <form id="registrationForm" action="/users/register" method="POST" enctype="multipart/form-data">
+      <div>
         <input class="input" type="text" name="name" placeholder="Nombre" required>
+        <div class="error-message" id="nameError">
+          <% if (error && error.includes('name')) { %>
+            <%- error %>
+          <% } %>
+        </div>
+      </div>
+
+      <div>
         <input class="input" type="email" name="email" placeholder="Correo" required>
+        <div class="error-message" id="emailError">
+          <% if (error && error.includes('email')) { %>
+            <%- error %>
+          <% } %>
+        </div>
+      </div>
+
+      <div>
         <input class="input" type="password" name="password" placeholder="Contraseña" required>
-        
-        <label for="pais">Selecciona tu país:
-          <select name="country" id="pais" required>
-            <option value="">Selecciona un país</option>
-            <option value="Panamá">Panamá</option>
-            <option value="Colombia">Colombia</option>
-            <option value="Costa Rica">Costa Rica</option>
-            <option value="Argentina">Argentina</option>
-            <option value="Perú">Perú</option>
-            <option value="Cuba">Cuba</option>
-          </select>
-        </label>
-        
-        <label>
-          <br>
-          <input type="checkbox" name="terminos"> Acepto terminos y condiciones
+        <div class="error-message" id="passwordError">
+          <% if (error && error.includes('password')) { %>
+            <%- error %>
+          <% } %>
+        </div>
+      </div>
+
+      <div>
+        <input class="input" type="password" name="confirmPassword" placeholder="Confirmar Contraseña" required>
+        <div class="error-message" id="confirmPasswordError">
+          <% if (error && error.includes('confirmPassword')) { %>
+            <%- error %>
+          <% } %>
+        </div>
+      </div>
+
+      <label for="pais">Selecciona tu país:
+        <select name="country" id="pais" required>
+          <option value="">Selecciona un país</option>
+          <option value="Panamá">Panamá</option>
+          <option value="Colombia">Colombia</option>
+          <option value="Costa Rica">Costa Rica</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Perú">Perú</option>
+          <option value="Cuba">Cuba</option>
+        </select>
       </label>
-        <br>
-        <br>
-        
-        <label for="profileImage">Sube tu imagen de perfil:</label>
-        <input type="file" name="profileImage" id="profileImage" accept="image/*">
-        
-        <br><br>
-        
-        <button class="btn-inicio" type="submit">Crear cuenta</button>
+
+      <label class="terms">
+        <input type="checkbox" name="terminos" required> Acepto términos y condiciones
+      </label>
+
+      <br><br>
+
+      <label for="profileImage">Sube tu imagen de perfil:</label>
+      <input type="file" name="profileImage" id="profileImage" accept="image/*">
+
+      <br><br>
+
+      <button class="btn-inicio" type="submit">Crear cuenta</button>
     </form>
-</div>
 
-<%- include('../partials/footer') %>
+    <% if (error === 'email_taken') { %>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const errorMessagesDiv = document.getElementById("errorMessages");
+          errorMessagesDiv.innerHTML = "El correo electrónico ya está en uso.";
+          errorMessagesDiv.style.display = "block";
+        });
+      </script>
+    <% } %>
 
+    <% if (error === 'registration_failed') { %>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const errorMessagesDiv = document.getElementById("errorMessages");
+          errorMessagesDiv.innerHTML = "Hubo un error al registrar el usuario.";
+          errorMessagesDiv.style.display = "block";
+        });
+      </script>
+    <% } %>
+  </div>
+
+  <script src="/javascripts/registerValidation.js"></script>
+
+  <%- include('../partials/footer') %>
 </body>
+
 </html>

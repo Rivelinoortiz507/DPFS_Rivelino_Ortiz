@@ -1,7 +1,5 @@
 <%- include('../partials/head') %>
-
 <link rel="stylesheet" href="/css/product-form.css">
-
 <%- include('../partials/header') %>
 </head>
 <body>
@@ -11,44 +9,54 @@
     </div>
 
     <form class="principal-form" action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-        <!-- Campo oculto para permitir el método PUT -->
         <input type="hidden" name="_method" value="PUT">
 
-        <!-- Campo de nombre -->
         <label for="name">Nombre del Producto:</label>
         <input class="input" type="text" id="name" name="name" value="<%= product.name %>" required>
+        <% if (errorMessages.name) { %>
+            <div class="error-message" style="color: red;"><%= errorMessages.name %></div>
+        <% } %>
 
-        <!-- Campo de descripción -->
         <label for="description">Descripción:</label>
         <textarea id="description" name="description" required><%= product.description %></textarea>
+        <% if (errorMessages.description) { %>
+            <div class="error-message" style="color: red;"><%= errorMessages.description %></div>
+        <% } %>
 
-        <!-- Campo de categoría -->
         <label for="category">Categoría:</label>
         <select id="category" name="categoryId" required>
             <% categories.forEach(category => { %>
                 <option value="<%= category.id %>" <%= product.categoryId === category.id ? 'selected' : '' %>><%= category.name %></option>
             <% }) %>
         </select>
+        <% if (errorMessages.category) { %>
+            <div class="error-message" style="color: red;"><%= errorMessages.category %></div>
+        <% } %>
 
-        <!-- Campo para subir imagen -->
         <label for="image">Imagen:</label>
         <input class="input" type="file" id="image" name="image" accept="image/*">
         <% if (product.imageUrl) { %>
             <div class="current-image">
                 <p>Imagen actual:</p>
-                <img src="/images/uploads<%= product.imageUrl %>" alt="Imagen actual" style="max-width: 200px;">
+                <img src="<%= product.imageUrl.startsWith('/') ? product.imageUrl : '/images/uploads/' + product.imageUrl %>" alt="Imagen actual" style="max-width: 200px;">
             </div>
+        <% } %>
+        <% if (errorMessages.image) { %>
+            <div class="error-message" style="color: red;"><%= errorMessages.image %></div>
         <% } %>
 
         <label for="price">Precio:</label>
         <input class="input" type="number" id="price" name="price" step="0.01" value="<%= product.price %>" required>
+        <% if (errorMessages.price) { %>
+            <div class="error-message" style="color: red;"><%= errorMessages.price %></div>
+        <% } %>
 
         <div class="form-actions">
             <button type="submit" class="btn-update">Actualizar Producto</button>
-                <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
-                    <button type="submit" class="btn-delete">Eliminar Producto</button>
-                    <a class="volver" href="/products">Volver</a>
-                </form>
+            <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="btn-delete">Eliminar Producto</button>
+                <a class="volver" href="/products">Volver</a>
+            </form>
         </div>
     </form>
 

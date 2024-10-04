@@ -20,12 +20,14 @@ const upload = multer({ storage: storage });
 exports.showCreateProductForm = async (req, res) => {
     try {
         const categories = await Category.findAll(); // Obtener todas las categorías
-        res.render('products/create-product', { categories }); // Pasar categorías a la vista
+        res.render('products/create-product', { categories, errorMessages: {} }); // Pasar categorías y un objeto vacío para los mensajes de error
     } catch (error) {
         console.error('Error al cargar el formulario de creación:', error);
         res.status(500).send('Error al cargar el formulario de creación');
     }
 };
+
+
 
 // Leer todos los productos
 exports.getAllProducts = async (req, res) => {
@@ -74,17 +76,20 @@ exports.showEditProductForm = async (req, res) => {
         const product = await Product.findByPk(productId);
         const categories = await Category.findAll();
 
+        // Aquí se inicializa errorMessages como un objeto vacío
+        const errorMessages = {};
+
         res.render('products/edit-product', {
             product,
             categories,
-            error: null // Asegúrate de pasar `error` aquí
+            errorMessages // Pasamos errorMessages a la vista
         });
     } catch (error) {
         console.error('Error al mostrar el formulario de edición:', error);
         res.render('products/edit-product', {
             product: null,
             categories: [],
-            error: 'Error al cargar el producto.'
+            errorMessages: { general: 'Error al cargar el producto.' } // Puedes definir un mensaje de error general si lo deseas
         });
     }
 };
@@ -92,10 +97,34 @@ exports.showEditProductForm = async (req, res) => {
 // Crear un producto
 exports.createProduct = async (req, res) => {
     const { name, description, price, categoryId } = req.body; 
+    let errorMessages = {};
+    let imageUrl = null; // Inicializa imageUrl
 
     try {
-        let imageUrl = null; // Inicializa imageUrl
+        // Validaciones
+        if (!name || name.length < 5) {
+            errorMessages.name = 'El nombre del producto es obligatorio y debe tener al menos 5 caracteres.';
+        }
 
+        if (!description || description.length < 20) {
+            errorMessages.description = 'La descripción del producto es obligatoria y debe tener al menos 20 caracteres.';
+        }
+
+        if (!categoryId) {
+            errorMessages.category = 'La categoría es obligatoria.';
+        }
+
+        if (!price || price <= 0) {
+            errorMessages.price = 'El precio es obligatorio y debe ser mayor que 0.';
+        }
+
+        // Si hay errores, renderiza el formulario con mensajes de error
+        if (Object.keys(errorMessages).length > 0) {
+            const categories = await Category.findAll();
+            return res.render('products/create-product', { categories, errorMessages });
+        }
+
+        // Manejo de la subida de la imagen
         if (req.file) {
             const originalName = req.file.originalname;
             const productImagesPath = path.join(__dirname, '../public/images/product');
@@ -122,54 +151,64 @@ exports.createProduct = async (req, res) => {
         res.redirect('/products');
     } catch (error) {
         console.error('Error al crear el producto:', error);
+        const categories = await Category.findAll();
         res.render('products/create-product', {
-            error: 'Error al crear el producto'
+            categories,
+            errorMessages: { general: 'Error al crear el producto' }
         });
     }
 };
+
 
 // Actualizar un producto
-exports.updateProduct = async (req, res) => {
-    const { id } = req.params;
-    const { name, description, price } = req.body;
+exports.editProduct = async (req, res) => {
+    const productId = req.params.id;
+    const { name, description, price, categoryId } = req.body;
+    let errorMessages = {};
 
+    // Validaciones
+    if (!name || name.length < 5) {
+        errorMessages.name = 'El nombre del producto es obligatorio y debe tener al menos 5 caracteres.';
+    }
+
+    if (!description || description.length < 20) {
+        errorMessages.description = 'La descripción del producto es obligatoria y debe tener al menos 20 caracteres.';
+    }
+
+    if (!categoryId) {
+        errorMessages.category = 'La categoría es obligatoria.';
+    }
+
+    if (!price || price <= 0) {
+        errorMessages.price = 'El precio es obligatorio y debe ser mayor que 0.';
+    }
+
+    // Si hay errores, renderiza el formulario con mensajes de error
+    if (Object.keys(errorMessages).length > 0) {
+        const categories = await Category.findAll();
+        // Recupera el producto actual
+        const product = await Product.findByPk(productId);
+        return res.render('products/edit-product', { product, categories, errorMessages });
+    }
+
+    // Si no hay errores, actualiza el producto
     try {
-        const product = await Product.findByPk(id);
-        if (!product) {
-            return res.status(404).send('Producto no encontrado');
-        }
+        const product = await Product.findByPk(productId);
 
-        let imageUrl = product.imageUrl; // Mantiene la imagen existente
-
-        if (req.file) {
-            const originalName = req.file.originalname;
-            const productImagesPath = path.join(__dirname, '../public/images/product');
-
-            // Asegúrate de que la carpeta exista
-            await fs.promises.mkdir(productImagesPath, { recursive: true });
-
-            // Construye la ruta completa para guardar la imagen
-            imageUrl = `/images/product/${originalName}`; 
-
-            // Guarda el archivo en la carpeta adecuada
-            await fs.promises.copyFile(req.file.path, path.join(productImagesPath, originalName));
-        }
+        // Si hay una nueva imagen, actualiza; de lo contrario, mantiene la imagen existente
+        const imageUrl = req.file ? req.file.filename : product.imageUrl;
 
         await Product.update(
-            { name, description, price, imageUrl },
-            { where: { id } }
+            { name, description, price, categoryId, imageUrl },
+            { where: { id: productId } }
         );
 
-        res.redirect('/products');
+        res.redirect(`/products/${productId}`); // Redirigir a la vista del producto actualizado
     } catch (error) {
         console.error('Error al actualizar el producto:', error);
-        res.render('products/edit-product', {
-            error: 'Error al actualizar el producto',
-            product: { id, name, description, price, imageUrl: product.imageUrl }
-        });
+        res.status(500).send('Error al actualizar el producto.');
     }
 };
-
 
 // Eliminar un producto
 exports.deleteProduct = async (req, res) => {

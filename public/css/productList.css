@@ -172,19 +172,21 @@ header {
     object-fit: cover;
   }
   
+  
   .p-principal {
-    font-size: 20px;
+    font-size: 22px;
     margin: 20px auto;
     padding: 0 15%;
     text-align: center;
   }
 
   .categoria{
-   text-align: center;
-   font-size: 32px;
-   background: linear-gradient(to right, #4B0000, #8B4500, #8B7500, #006400, #00008B, #2F004F, #4B0082);
-   -webkit-background-clip: text;
-   color: transparent;
+    margin: 10px;
+    font-size: 45px;
+    text-align: center;
+    background: linear-gradient(to right, #4B0000, #8B4500, #8B7500, #006400, #00008B, #2F004F, #4B0082);
+    -webkit-background-clip: text;
+    color: transparent;
   }
 
   .crear-producto{
@@ -308,15 +310,14 @@ header {
   background-color: #b31a1a;
 }
   
-  
-  footer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #48849b;
-    padding: 20px 0;
-    color: #e6e6e6;
-    font-size: 1em;
-    margin-top: 50px;
-  }
-  
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: space-around;
+  align-items: center;
+  background-color: rgb(72, 132, 155);
+  font-size: 17px;
+  color: rgb(230, 230, 230);
+  margin-top: 100px;
+}

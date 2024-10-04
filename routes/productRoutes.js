@@ -8,7 +8,7 @@ router.get('/create', productsController.showCreateProductForm); // Mostrar form
 router.post('/', uploadProduct.single('image'), productsController.createProduct); // Crear producto con imagen
 router.get('/:id', productsController.getProductById); // Obtener producto por ID
 router.get('/edit/:id', productsController.showEditProductForm); // Mostrar formulario de edición
-router.put('/:id', uploadProduct.single('image'), productsController.updateProduct); // Actualizar producto con imagen
+router.put('/:id', uploadProduct.single('image'), productsController.editProduct); // Actualizar producto con imagen
 router.delete('/:id', productsController.deleteProduct); // Eliminar producto
 
 module.exports = router;
