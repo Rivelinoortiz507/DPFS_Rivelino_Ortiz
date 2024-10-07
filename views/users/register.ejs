@@ -3,11 +3,16 @@
 <title>Registro</title>
 </head>
 
+<%- include('../partials/header') %>
 <body>
-  <%- include('../partials/header') %>
+  <div class="mensaje-intro">
+    <h1>¡Bienvenido a nuestra comunidad! </h1>
+    <p>Nos alegra que estés aquí. Completa tu registro para unirte a nuestra familia y disfrutar de experiencias únicas. ¡Tu próxima aventura comienza ahora!
+    <br> ¿Listo para empezar? </p>
+    </div>
 
   <div class="container">
-    <h1>Crear una cuenta</h1>
+    <h2>Crear una cuenta</h2>
 
     <% if (success === 'registration') { %>
       <div class="success">
@@ -49,6 +54,15 @@
         <input class="input" type="password" name="confirmPassword" placeholder="Confirmar Contraseña" required>
         <div class="error-message" id="confirmPasswordError">
           <% if (error && error.includes('confirmPassword')) { %>
+            <%- error %>
+          <% } %>
+        </div>
+      </div>
+
+      <div>
+        <input class="input" type="number" name="age" placeholder="Edad" required>
+        <div class="error-message" id="ageError">
+          <% if (error && error.includes('age')) { %>
             <%- error %>
           <% } %>
         </div>

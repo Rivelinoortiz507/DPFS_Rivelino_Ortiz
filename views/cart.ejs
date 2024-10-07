@@ -4,8 +4,9 @@
 
 <body>
     <%- include('partials/header') %>
-    
-    <h1>Carrito de compras</h1>
+
+    <h1>¡Bienvenido a tu Carrito de Compras!</h1>
+    <p class="mensaje-intro">Aquí puedes revisar los productos que has seleccionado.</p>
     
     <div class="cart-container">
         <% if (cart.length > 0) { %>
@@ -49,7 +50,9 @@
             </div>
 
         <% } else { %>
-            <p>Tu carrito está vacío.</p>
+            <p>Tu carrito está vacío,
+                <br>añade productos.
+            </p>
         <% } %>
     </div>
 
@@ -67,9 +70,9 @@
             const itbms = total * 0.07;
             const grandTotal = total + itbms;
 
-            document.getElementById('total').innerText = 'Total: $' + total.toFixed(2);
+            document.getElementById('total').innerText = 'Subtotal: $' + total.toFixed(2);
             document.getElementById('itbms').innerText = 'ITBMS (7%): $' + itbms.toFixed(2);
-            document.getElementById('grand-total').innerHTML = '<strong>Total a Pagar: $' + grandTotal.toFixed(2) + '</strong>';
+            document.getElementById('grand-total').innerHTML = '<strong>Total: $' + grandTotal.toFixed(2) + '</strong>';
         }
     </script>
 

@@ -1,0 +1,51 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/updateProfile.css">
+<title>Actualizar Perfil</title>
+</head>
+
+<%- include('../partials/header') %>
+
+<body>
+  <div class="update-container update-profile">
+    <div class="info-message">
+      <h2>Actualizar Información</h2>
+      <p>¡Hola! Asegúrate de que tu información esté siempre actualizada para que podamos ofrecerte un mejor servicio.</p>
+      <p>Por favor, completa el formulario a continuación con tus datos actualizados.</p>
+    </div>
+    <form class="form" id="update-form" method="POST" action="/users/update">
+      <div>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" value="<%= user.name %>" required>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<%= user.email %>" required>
+      </div>
+      <div>
+        <label for="pais">Selecciona tu país:</label>
+        <select name="country" id="pais" required>
+            <option value="">Selecciona un país</option>
+            <option value="Panamá" <%= user.country === 'Panamá' ? 'selected' : '' %>>Panamá</option>
+            <option value="Colombia" <%= user.country === 'Colombia' ? 'selected' : '' %>>Colombia</option>
+            <option value="Costa Rica" <%= user.country === 'Costa Rica' ? 'selected' : '' %>>Costa Rica</option>
+            <option value="Argentina" <%= user.country === 'Argentina' ? 'selected' : '' %>>Argentina</option>
+            <option value="Perú" <%= user.country === 'Perú' ? 'selected' : '' %>>Perú</option>
+            <option value="Cuba" <%= user.country === 'Cuba' ? 'selected' : '' %>>Cuba</option>
+        </select>
+      </div>
+      <div>
+        <label for="age">Edad:</label>
+        <input type="number" id="age" name="age" value="<%= user.age %>" required>
+      </div>
+      <button type="submit">Actualizar</button>
+      <div>
+        <a id="volver" href="/users/profile">Volver</a>
+      </div>
+    </form>
+    <div id="update-message" class="update-message"></div>
+  </div>
+
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

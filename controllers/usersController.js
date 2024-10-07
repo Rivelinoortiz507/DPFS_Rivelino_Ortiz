@@ -11,10 +11,18 @@ exports.getRegisterForm = (req, res) => {
 
 // Manejar el registro de usuario
 exports.register = async (req, res) => {
-    const { name, email, password, country } = req.body;
+    const { name, email, password, country, age } = req.body;
     const profileImage = req.file ? req.file.filename : null; // Manejo de imagen
 
     try {
+        // Validación básica para la edad
+        if (!age || isNaN(age) || age < 0 || age > 120) {
+            return res.render('users/register', {
+                error: 'invalid_age', // Mensaje de error por edad no válida
+                success: null // No hay éxito
+            });
+        }
+
         // Verifica si el email ya existe
         const existingUser = await User.findOne({ where: { email } });
 
@@ -34,6 +42,7 @@ exports.register = async (req, res) => {
             email,
             password: hashedPassword, // Guarda la contraseña encriptada
             country,
+            age: parseInt(age, 10), // Asegúrate de que la edad sea un número
             profileImageUrl: profileImage // Guardar la URL de la imagen
         });
 
@@ -89,7 +98,8 @@ exports.loginUser = async (req, res) => {
     }
 };
 
-// Mostrar el perfil del usuario
+
+// Método para obtener el perfil del usuario
 exports.getProfile = async (req, res) => {
     try {
         if (!req.session.userId) {
@@ -102,13 +112,60 @@ exports.getProfile = async (req, res) => {
             return res.redirect('/users/login'); // Redirigir al login si el usuario no se encuentra
         }
 
-        res.render('users/profile', { user });
+        res.render('users/profile', { user }); // Renderiza la vista de perfil
     } catch (error) {
         console.error('Error al mostrar perfil:', error);
         res.redirect('/users/login'); // Redirigir al login en caso de error
     }
 };
 
+// Método para mostrar el formulario de actualización del perfil
+exports.getUpdateProfileForm = async (req, res) => {
+    try {
+        if (!req.session.userId) {
+            return res.redirect('/users/login'); // Redirigir al login si no está autenticado
+        }
+
+        const user = await User.findByPk(req.session.userId);
+
+        if (!user) {
+            return res.redirect('/users/login'); // Redirigir al login si el usuario no se encuentra
+        }
+
+        res.render('users/updateProfile', { user }); // Renderiza la vista de actualización de perfil
+    } catch (error) {
+        console.error('Error al mostrar el formulario de actualización:', error);
+        res.redirect('/users/login'); // Redirigir al login en caso de error
+    }
+};
+
+// Método para actualizar el perfil del usuario
+exports.updateProfile = async (req, res) => {
+    try {
+        const userId = req.session.userId;
+        const { name, email, country, age } = req.body;
+
+        const user = await User.findByPk(userId);
+        
+        if (!user) {
+            return res.status(404).send('Usuario no encontrado');
+        }
+
+        // Actualiza los campos del usuario
+        user.name = name;
+        user.email = email;
+        user.country = country;
+        user.age = age;
+
+        await user.save(); // Guarda los cambios en la base de datos
+
+        req.flash('success', 'Perfil actualizado con éxito');
+        res.redirect('/users/profile'); // Redirige a la página de perfil después de la actualización
+    } catch (error) {
+        console.error('Error al actualizar el perfil:', error);
+        res.status(500).send('Error al actualizar el perfil');
+    }
+};
 // Manejar el cierre de sesión
 exports.logout = (req, res) => {
     req.session.destroy((err) => {

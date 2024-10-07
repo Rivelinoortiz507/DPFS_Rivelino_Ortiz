@@ -12,25 +12,26 @@
 
     <main>
         <div class="product-detail">
+            <h2 class="movile-title"><%= product.name %></h2>
             <img class="product-img" src="<%= product.imageUrl %>" alt="<%= product.name %>">
             <div>
-                <h2><%= product.name %></h2>
+                <h2 class="pc-title"><%= product.name %></h2>
                 <p class="description"><%= product.description %></p>
                 <p class="price">Precio: $<%= product.price %></p>
 
             
-                <form id="add-to-cart-form" action="/cart/add" method="POST" style="display:inline;">
+                <form id="add-to-cart-form" action="/cart/add" method="POST">
                     <input type="hidden" name="productId" value="<%= product._id %>">
                     <button class="add-to-cart" data-product-id="<%= product.id %>" data-product-name="<%= product.name %>" data-product-price="<%= product.price %>">Añadir al carrito</button>
                 </form>
 
                 <a class="edit" href="/products/edit/<%= product.id %>">Editar</a>
-                <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
-                    <button type="submit" class="btn-delete">Eliminar</button>
+                <form id="delete-form" action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="button" class="btn-delete" onclick="confirmDelete()">Eliminar</button>
                 </form>
+                <a class="volver" href="/products">Volver</a>
             </div>
         </div>
-        <a class="volver" href="/products">Volver</a>
     </main>
 
     <script src="/javascripts/productDetail.js" defer></script>

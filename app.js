@@ -4,9 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const methodOverride = require('method-override');
-const { addToCart } = require('./controllers/cartController');
-
-
+const flash = require('connect-flash');
 
 const productRoutes = require('./routes/productRoutes');
 const usersRouter = require('./routes/usersRouter');
@@ -16,7 +14,6 @@ const cartRoutes = require('./routes/cartRoutes');
 const indexRouter = require('./routes/indexRouter');
 
 const app = express();
-
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -28,8 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-// Configuración de sesiones
+// Configuración de sesiones **DEBE IR ANTES DE connect-flash**
 app.use(session({
     secret: '2751356junior', 
     resave: false,
@@ -37,9 +33,14 @@ app.use(session({
     cookie: { secure: false } 
 }));
 
+// Inicializar connect-flash
+app.use(flash());
+
+// Middleware para hacer que los mensajes flash estén disponibles en todas las vistas
 app.use((req, res, next) => {
-  res.locals.user = req.session.userId || null; // Si el usuario está logueado, se guarda su ID en la sesión
-  next();
+    res.locals.successMessage = req.flash('success'); // Esto lo hará disponible en las vistas
+    res.locals.user = req.session.userId || null; // Si el usuario está logueado, se guarda su ID en la sesión
+    next();
 });
 
 // Configuración de method-override
@@ -53,21 +54,20 @@ app.use('/auth/register', registerRoutes);
 app.use('/cart', cartRoutes);
 app.use('/', indexRouter);
 
-
 // Middleware para manejar errores 404
 app.use((req, res, next) => {
-  res.status(404);
-  res.render('error', { message: 'Not Found', error: {} });
+    res.status(404);
+    res.render('error', { message: 'Not Found', error: {} });
 });
 
 // Middleware para manejar errores
 app.use((err, req, res, next) => {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // Renderiza la página de error
-  res.status(err.status || 500);
-  res.render('error', { message: res.locals.message, error: res.locals.error });
+    // Renderiza la página de error
+    res.status(err.status || 500);
+    res.render('error', { message: res.locals.message, error: res.locals.error });
 });
 
 module.exports = app;

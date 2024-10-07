@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING, 
       allowNull: true 
     },
+    age: {
+      type: DataTypes.INTEGER, // Añade el campo 'age' aquí
+      allowNull: true, // Cambia esto si quieres que sea requerido
+    },
     profileImageUrl: {
       type: DataTypes.STRING, 
       allowNull: true // Cambiar a false si es obligatorio

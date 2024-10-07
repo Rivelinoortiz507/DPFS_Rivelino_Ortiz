@@ -36,3 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+function confirmDelete() {
+    const confirmAction = confirm("¿Estás seguro de que deseas eliminar este producto?");
+    if (confirmAction) {
+        document.getElementById("delete-form").submit();
+    } else {
+        alert("El producto no fue eliminado.");
+    }
+}

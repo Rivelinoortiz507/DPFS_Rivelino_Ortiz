@@ -54,7 +54,14 @@ router.post('/login', [
 // Ruta para obtener el perfil de usuario
 router.get('/profile', usersController.getProfile);
 
+// Ruta para mostrar el formulario de actualización del perfil
+router.get('/update', usersController.getUpdateProfileForm);
+
+// Actualizar el perfil
+router.post('/update', usersController.updateProfile); 
+
 // Ruta para cerrar sesión
 router.post('/logout', usersController.logout);
+
 
 module.exports = router;

@@ -1,5 +1,4 @@
 <%- include('../partials/head') %>
-
 <link rel="stylesheet" href="/css/profile.css">
 <title>Perfil de Usuario</title>
 </head>
@@ -7,6 +6,11 @@
 <%- include('../partials/header') %>
 
 <body>
+<div class="intro">
+  <h2>¡Bienvenido a tu espacio personal!  </h2>
+   <p class="mensaje-intro">Aquí puedes ver tu información.</p> 
+</div>
+
   <div class="profile-container">
     <div class="profile-header">
       <% if (user.profileImageUrl) { %>
@@ -25,9 +29,11 @@
     <div class="profile-info">
       <p><label>Email:</label> <%= user.email %></p>
       <p><label>País:</label> <%= user.country %></p>
+      <p><label>Edad:</label> <%= user.age %></p>
     </div>
     
     <div class="profile-footer">
+      <button id="update-btn" class="update-button">Actualizar Información</button>
       <button id="logout-btn" class="logout-button">Cerrar sesión</button>
       <div id="message" class="logout-message"></div>
     </div>
@@ -48,6 +54,10 @@
           console.error('Error:', error);
           document.getElementById('message').innerText = 'Hubo un error al cerrar sesión.';
         });
+      });
+
+      document.getElementById('update-btn').addEventListener('click', () => {
+        window.location.href = '/users/update'; // Redirige a la página de actualización
       });
     </script>
   </div>
