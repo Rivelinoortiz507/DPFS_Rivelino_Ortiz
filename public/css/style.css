@@ -4,9 +4,10 @@
   margin: 0;
 }
 
+
 header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: rgb(72, 132, 155);
   height: 90px;
@@ -165,7 +166,7 @@ header {
 }
 
 h1{
-  margin: 10px;
+  margin: 20px;
   font-size: 36px;
   text-align: center;
   background: linear-gradient(to right, #4B0000, #8B4500, #8B7500, #006400, #00008B, #2F004F, #4B0082);
@@ -307,7 +308,12 @@ footer {
   }
 
   .quienes-somos {
-    width: 60%;
+    width: 80%;
+    padding: 25px;
+  }
+
+  .quienes-somos p{
+  font-size: 15px;
   }
 
   .quienes-somos h1{
@@ -326,17 +332,29 @@ footer {
     height: 60px;
   }
 
-  .search-container input {
+  .search-container input[type="text"] {
+    width: 50%;
     height: 10px;
-  }
+}
 
-  .search-container button {
-    padding: 8px 10px;
-    font-size: 12px;
-  }
+.search-container button {
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
 
   .banner {
     display: none;
+  }
+
+  
+  article {
+    width: 90px;
+  }
+
+  .añadir-carrito-btn{
+    font-size: 12px;
+    width: 90%;
   }
 
   .p-principal {
@@ -350,7 +368,12 @@ footer {
   }
 
   .quienes-somos {
-    width: 60%;
+    width: 80%;
+    padding: 30px;
+  }
+
+  .quienes-somos p{
+  font-size: 14px;
   }
 
   footer {

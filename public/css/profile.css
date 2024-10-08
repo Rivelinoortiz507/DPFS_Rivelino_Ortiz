@@ -6,7 +6,7 @@
 
 header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: rgb(72, 132, 155);
   height: 90px;
@@ -344,14 +344,16 @@ padding: 10px;
     height: 60px;
   }
 
-  .search-container input {
+  .search-container input[type="text"] {
+    width: 50%;
     height: 10px;
-  }
+}
 
-  .search-container button {
-    padding: 8px 10px;
-    font-size: 12px;
-  }
+.search-container button {
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
 
   .banner {
     display: none;
@@ -370,6 +372,7 @@ padding: 10px;
   .logout-button {
     font-size: 12px;
     padding: 8px;
+    margin: 7px;
   }
 
   footer {

@@ -2,7 +2,8 @@ const path = require('path');
 const fs = require('fs');
 const { Product, Category } = require('../sequelize');
 const multer = require('multer');
-const { Op } = require('sequelize'); // Asegúrate de importar Op para las consultas
+const { Op } = require('sequelize'); 
+
 
 // Configuración de multer para la carga de archivos
 const storage = multer.diskStorage({
@@ -260,5 +261,57 @@ exports.searchProducts = async (req, res) => {
     } catch (err) {
         console.error('Error al realizar la búsqueda:', err);
         res.status(500).json({ error: 'Error al realizar la búsqueda' });
+    }
+};
+
+// Función para obtener todos los productos y renderizar la lista
+exports.fetchAllProducts = async (req, res) => {
+    try {
+        const products = await Product.findAll({
+            include: [{
+                model: Category,
+                as: 'category', // Asegúrate de usar el alias aquí
+                attributes: ['id', 'name']
+            }]
+        });
+
+        // Para depuración: imprime los productos obtenidos
+        console.log(products);
+
+        res.render('products/productsView', { products });
+    } catch (error) {
+        console.error('Error al obtener productos:', error);
+        res.status(500).send('Error al obtener productos');
+    }
+};
+
+// Función para obtener los detalles de un producto específico
+exports.getProductDetails = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const product = await Product.findOne({
+            where: { id },
+            include: [{
+                model: Category,
+                as: 'category',
+                attributes: ['id', 'name']
+            }]
+        });
+
+        if (!product) {
+            return res.status(404).send('Producto no encontrado');
+        }
+
+        // Verificar el tipo y valor de product.price
+        console.log('Precio del producto:', product.price, typeof product.price);
+
+        // Asegurarse de que price sea un número
+        product.price = parseFloat(product.price); // Asegúrate de que sea un número
+
+        res.render('products/productInfoView', { product });
+    } catch (error) {
+        console.error('Error al obtener el detalle del producto:', error);
+        res.status(500).send('Error al obtener el detalle del producto');
     }
 };

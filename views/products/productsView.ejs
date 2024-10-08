@@ -1,0 +1,52 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/userDetails.css">
+
+<%- include('../partials/header') %>
+<title>Lista de Productos</title>
+</head>
+<body>
+
+  
+  <h1>Lista de Productos</h1>
+  <p class="products-total">Total de productos: <%= products.length %></p>
+
+  <% const countByCategory = {}; %>
+  <% products.forEach(product => { %>
+    <% const category = product.category ? product.category.name : 'Fantasías'; %>
+    <% countByCategory[category] = (countByCategory[category] || 0) + 1; %>
+  <% }) %>
+
+  <% for (let category in countByCategory) { %>
+    <h2>Categoría <%= category %>: <%= countByCategory[category] %> productos</h2>
+  <% } %>
+
+  <!-- Tabla de Productos -->
+  <table class="products-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th>Detalles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach(product => { %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td><%= product.category ? product.category.name : 'Fantasías' %></td>
+          <td>
+            <a class="products-details" href="/api/products/<%= product.id %>">Ver Detalle</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  
+
+<%- include('../partials/footer') %>
+</body>
+</html>

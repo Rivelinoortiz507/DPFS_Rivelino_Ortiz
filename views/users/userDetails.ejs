@@ -1,0 +1,26 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/userDetails.css">
+</head>
+<body>
+
+    <%- include('../partials/header') %>
+
+    <h1>Detalles del Usuario</h1>
+
+    <div class="container-details">
+        <div class="profile-image-container">
+            <img src="<%= user.profileImageUrl %>" alt="Imagen de perfil de <%= user.name %>" class="profile-image">
+        </div>
+        <p><strong>ID:</strong> <%= user.id %></p>
+        <p><strong>Nombre:</strong> <%= user.name %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>Edad:</strong> <%= user.age %></p>
+        <p><strong>País:</strong> <%= user.country %></p> 
+        <br>
+        <a class="volver-button" href="/api/users">Volver a lista de usuarios</a>
+    </div>
+
+    <%- include('../partials/footer') %>
+    
+</body>
+</html>

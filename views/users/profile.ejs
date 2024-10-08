@@ -6,10 +6,10 @@
 <%- include('../partials/header') %>
 
 <body>
-<div class="intro">
-  <h2>¡Bienvenido a tu espacio personal!  </h2>
-   <p class="mensaje-intro">Aquí puedes ver tu información.</p> 
-</div>
+  <div class="intro">
+    <h2>¡Bienvenido a tu espacio personal!</h2>
+    <p class="mensaje-intro">Aquí puedes ver tu información.</p> 
+  </div>
 
   <div class="profile-container">
     <div class="profile-header">
@@ -43,12 +43,15 @@
         fetch('/users/logout', {
           method: 'POST',
         })
-        .then(response => response.text())
-        .then(message => {
-          document.getElementById('message').innerText = message; // Muestra el mensaje de éxito
-          setTimeout(() => {
-            window.location.href = '/'; // Redirige a la página de inicio después de unos segundos
-          }, 2000); // Cambia el tiempo según tus necesidades
+        .then(response => {
+          if (response.ok) {
+            document.getElementById('message').innerText = 'Sesión cerrada con éxito.'; // Muestra el mensaje de éxito
+            setTimeout(() => {
+              window.location.href = '/users/login'; // Redirige a la página de login o inicio después de 2 segundos
+            }, 1000); 
+          } else {
+            throw new Error('Error al cerrar sesión');
+          }
         })
         .catch(error => {
           console.error('Error:', error);

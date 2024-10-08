@@ -5,6 +5,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
+const PORT = process.env.PORT || 5000;
 
 const productRoutes = require('./routes/productRoutes');
 const usersRouter = require('./routes/usersRouter');
@@ -12,8 +13,12 @@ const loginRoutes = require('./routes/auth/login');
 const registerRoutes = require('./routes/auth/register');
 const cartRoutes = require('./routes/cartRoutes');
 const indexRouter = require('./routes/indexRouter');
+const userApiRoutes = require('./routes/userApi');
+const apiProductsRoutes = require('./routes/apiProducts');
+const categoriesApiRoutes = require('./routes/categoriesApi');
 
 const app = express();
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -53,6 +58,10 @@ app.use('/auth/login', loginRoutes);
 app.use('/auth/register', registerRoutes);
 app.use('/cart', cartRoutes);
 app.use('/', indexRouter);
+app.use('/api/users', userApiRoutes);
+app.use('/api', apiProductsRoutes);
+app.use('/api/categories', categoriesApiRoutes);
+
 
 // Middleware para manejar errores 404
 app.use((req, res, next) => {
@@ -69,5 +78,10 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.render('error', { message: res.locals.message, error: res.locals.error });
 });
+
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
+
 
 module.exports = app;

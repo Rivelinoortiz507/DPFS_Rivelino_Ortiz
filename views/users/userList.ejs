@@ -1,0 +1,36 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/userDetails.css">
+<title>Lista de Usuarios</title>
+</head>
+<body>
+    
+    <%- include('../partials/header') %>
+
+    <h1>Lista de Usuarios</h1>
+    <p class="users-total">Total de usuarios: <%= users.length %></p> 
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><a class="user-details" href="users/<%= user.id %>">Ver detalle</a></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <%- include('../partials/footer') %>
+
+</body>
+</html>

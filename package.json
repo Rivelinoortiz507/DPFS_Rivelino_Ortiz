@@ -7,6 +7,7 @@
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
+    "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
@@ -21,6 +22,9 @@
     "morgan": "~1.9.1",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.11.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
     "sequelize": "^6.37.3"
   },
   "main": "app.js",
