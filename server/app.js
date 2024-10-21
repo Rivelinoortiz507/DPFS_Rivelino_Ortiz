@@ -64,12 +64,12 @@ app.use('/api/users', userApiRoutes);
 app.use('/api', apiProductsRoutes);
 app.use('/api/categories', categoriesApiRoutes); 
 
-// Servir archivos estáticos de la carpeta 'client/build'
-app.use(express.static(path.join(__dirname, '../client/build')));
+// Servir archivos estáticos desde la carpeta 'frontend/dist'
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // Cualquier otra ruta que no sea API servirá el index.html de React
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
 // Middleware para manejar errores 404

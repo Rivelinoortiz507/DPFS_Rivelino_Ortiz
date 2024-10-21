@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './App.css'; // Asegúrate de tener estilos CSS para este componente
+import './App.css'; 
+
+
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -77,8 +79,8 @@ const App = () => {
           <h2>Último Usuario Creado</h2>
           {lastUser ? (
             <div>
-              <p>Nombre: <strong>{lastUser.name}</strong></p>
-              <p>Email: <strong>{lastUser.email}</strong></p>
+              <p><strong>Nombre:</strong> {lastUser.name}</p>
+              <p><strong>Email:</strong> {lastUser.email}</p>
             </div>
           ) : (
             <p>No hay usuarios creados.</p>
@@ -86,17 +88,22 @@ const App = () => {
         </div>
       </div>
       <div className="panel card mb-4">
-        <div className="card-body">
-          <h2>Categorías</h2>
-          <ul className="list-group">
-            {categories.map((category) => (
-              <li key={category.id} className="list-group-item">
-                {category.name}: <strong>{category.productCount}</strong>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+  <div className="card-body">
+    <h2>Categorías</h2>
+    <ul className="list-group">
+      {categories.map((category) => {
+        const categoryProducts = products.filter(product => product.categoryId === category.id);
+        const productCount = categoryProducts.length;
+
+        return (
+          <li key={category.id} className="list-group-item">
+            <strong>{category.name}</strong>: {productCount}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</div>
       <div className="panel card mb-4">
         <div className="card-body">
           <h2>Listado de Productos</h2>
