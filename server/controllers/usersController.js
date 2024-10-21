@@ -9,7 +9,7 @@ exports.getRegisterForm = (req, res) => {
     });
 };
 
-// Manejar el registro de usuario
+/// Manejar el registro de usuario
 exports.register = async (req, res) => {
     const { name, email, password, country, age } = req.body;
     const profileImage = req.file ? req.file.filename : null;
@@ -45,11 +45,8 @@ exports.register = async (req, res) => {
             profileImageUrl: profileImage
         });
 
-        // Redirigir al formulario de registro con un mensaje de éxito
-        res.render('users/register', {
-            success: 'registration',
-            error: null
-        });
+        // Redirigir al formulario de login con un mensaje de éxito
+        res.redirect('/users/login?success=registration'); // Agregar el mensaje de éxito como parámetro de consulta
     } catch (error) {
         console.error('Error al registrar usuario:', error);
         res.render('users/register', {
@@ -59,11 +56,13 @@ exports.register = async (req, res) => {
     }
 };
 
-// Mostrar el formulario de login
 exports.getLoginForm = (req, res) => {
-    res.render('users/login', { errorMessage: null, email: '' });
+    res.render('users/login', {
+        errorMessage: req.query.error || null, // Manejo del error aquí
+        email: '',
+        successMessage: req.query.success ? '¡Registro exitoso! Por favor, inicia sesión.' : null // Manejo del mensaje de éxito
+    });
 };
-
 // Manejar el login de usuario
 exports.loginUser = async (req, res) => {
     const { email, password, rememberMe } = req.body;
@@ -85,12 +84,13 @@ exports.loginUser = async (req, res) => {
             res.cookie('userId', user.id, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
         }
 
-        res.redirect('/users/profile');
+      // Redirigir al formulario de inicio de sesión con un mensaje de éxito
+      res.redirect('/users/login?success=true');
     } catch (error) {
-        console.error('Error al iniciar sesión:', error);
-        res.render('users/login', {
-            errorMessage: 'Error en el servidor',
-            email
+        console.error('Error al registrar usuario:', error);
+        res.render('users/register', {
+            error: 'registration_failed',
+            success: null
         });
     }
 };

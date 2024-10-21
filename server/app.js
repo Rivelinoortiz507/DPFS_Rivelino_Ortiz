@@ -5,7 +5,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const cors = require('cors');
 
 const productRoutes = require('./routes/productRoutes');
@@ -14,9 +14,9 @@ const loginRoutes = require('./routes/auth/login');
 const registerRoutes = require('./routes/auth/register');
 const cartRoutes = require('./routes/cartRoutes');
 const indexRouter = require('./routes/indexRouter');
-const userApiRoutes = require('./routes/userApi');
-const apiProductsRoutes = require('./routes/apiProducts');
-const categoriesApiRoutes = require('./routes/categoriesApi');
+const userApiRoutes = require('./routes/api/userApi');
+const apiProductsRoutes = require('./routes/api/apiProducts');
+const categoriesApiRoutes = require('./routes/api/categoriesApi');
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Configuración de sesiones **DEBE IR ANTES DE connect-flash**
+
 app.use(session({
     secret: '2751356junior', 
     resave: false,
@@ -64,28 +64,11 @@ app.use('/api/users', userApiRoutes);
 app.use('/api', apiProductsRoutes);
 app.use('/api/categories', categoriesApiRoutes); 
 
-// Servir archivos estáticos desde la carpeta 'frontend/dist'
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-
-// Cualquier otra ruta que no sea API servirá el index.html de React
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
-});
 
 // Middleware para manejar errores 404
 app.use((req, res, next) => {
     res.status(404);
     res.render('error', { message: 'Not Found', error: {} });
-});
-
-// Middleware para manejar errores
-app.use((err, req, res, next) => {
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // Renderiza la página de error
-    res.status(err.status || 500);
-    res.render('error', { message: res.locals.message, error: res.locals.error });
 });
 
 app.listen(PORT, () => {

@@ -7,7 +7,7 @@ const usersController = require('../../controllers/usersController');
 router.get('/register', usersController.getRegisterForm); 
 
 // Registrar un usuario
-router.post('/register', uploadProfile.single('profileImage'), usersController.register); // Usa uploadProfile aquí
+router.post('/register', uploadProfile.single('profileImage'), usersController.register); 
 
 // Mostrar formulario de inicio de sesión
 router.get('/login', usersController.getLoginForm);

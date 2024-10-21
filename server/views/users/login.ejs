@@ -1,6 +1,6 @@
 <%- include('../partials/head') %>
 
-    <link rel="stylesheet" href="/css/auth.css">
+<link rel="stylesheet" href="/css/auth.css">
 </head>
 
 <%- include('../partials/header') %>
@@ -8,41 +8,52 @@
 <body>
 
 <div class="mensaje-intro">
-<h1>¡Nos alegra verte de nuevo! </h1>
-<p>Inicia sesión para continuar disfrutando de todo lo que tenemos para ti. ¡Es momento de retomar donde lo dejaste y seguir descubriendo lo mejor!
-<br>¡Estamos felices de tenerte de vuelta!  </p>
+    <h1>¡Nos alegra verte de nuevo!</h1>
+    <p>Inicia sesión para continuar disfrutando de todo lo que tenemos para ti. ¡Es momento de retomar donde lo dejaste y seguir descubriendo lo mejor!<br>¡Estamos felices de tenerte de vuelta!</p>
 </div>
 
-    <div class="container">
-        <h2>Iniciar Sesión</h2>
+<div class="container">
+    <h2>Iniciar Sesión</h2>
 
-        <!-- Mostrar mensaje de error si existe -->
-        <% if (errorMessage) { %>
-            <div class="error-message">
-                <p><%= errorMessage %></p>
-            </div>
-        <% } %>
+    <!-- Mostrar mensaje de éxito si existe -->
+    <% if (successMessage) { %>
+        <div class="success-message">
+            <p><%= successMessage %></p>
+        </div>
+    <% } %>
 
-        <form action="/users/login" method="POST">
-            <input class="input" 
-                   type="email" 
-                   name="email" 
-                   placeholder="Correo" 
-                   value="<%= email ? email : '' %>" 
-                   required>
-            <input class="input" 
-                   type="password" 
-                   name="password" 
-                   placeholder="Contraseña" 
-                   required>
-                   <label>
-                    <input type="checkbox" name="remembe rMe"> Recordarme
-                </label>
-            <button class="btn-inicio" type="submit">Iniciar sesión</button>
-        </form>
-    </div>
+    <!-- Mostrar mensaje de error si existe -->
+    <% if (errorMessage) { %>
+        <div class="error-message">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
 
-    <%- include('../partials/footer') %>
+    <form id="loginForm" action="/users/login" method="POST">
+        <input class="input" 
+               type="email" 
+               name="email" 
+               placeholder="Correo electrónico" 
+               value="<%= email ? email : '' %>" 
+               required>
+        <div class="error-message" id="emailError"></div>
+        <input class="input" 
+               type="password" 
+               name="password" 
+               placeholder="Contraseña" 
+               required>
+        <div class="error-message" id="passwordError"></div>
+        <label>
+            <input type="checkbox" name="rememberMe"> Recordarme
+        </label>
+        <button class="btn-inicio" type="submit">Iniciar sesión</button>
+    </form>
+
+    <!-- Mensaje para invitar a registrarse -->
+    <p>¿No tienes una cuenta? <a href="/users/register">Regístrate aquí</a></p>
+</div>
+
+<%- include('../partials/footer') %>
 
 </body>
 </html>

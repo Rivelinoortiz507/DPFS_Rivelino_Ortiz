@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const productsController = require('../controllers/productsController');
+const productsController = require('../../controllers/apiControllers');
 
 // Ruta para obtener y renderizar la lista de productos
 router.get('/products', productsController.fetchAllProducts); // Actualizamos el nombre de la función

@@ -1,7 +1,7 @@
 // routes/userApi.js
 const express = require('express');
 const router = express.Router();
-const { getAllUsers, getUserDetails } = require('../controllers/usersController');
+const { getAllUsers, getUserDetails } = require('../../controllers/apiControllers');
 
 // Endpoint para obtener la lista de todos los usuarios
 router.get('/', getAllUsers);

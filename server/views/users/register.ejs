@@ -5,119 +5,125 @@
 
 <%- include('../partials/header') %>
 <body>
-  <div class="mensaje-intro">
-    <h1>¡Bienvenido a nuestra comunidad! </h1>
+<div class="mensaje-intro">
+    <h1>¡Bienvenido a nuestra comunidad!</h1>
     <p>Nos alegra que estés aquí. Completa tu registro para unirte a nuestra familia y disfrutar de experiencias únicas. ¡Tu próxima aventura comienza ahora!
-    <br> ¿Listo para empezar? </p>
-    </div>
+    <br>¿Listo para empezar?</p>
+</div>
 
-  <div class="container">
+<div class="container">
     <h2>Crear una cuenta</h2>
 
     <% if (success === 'registration') { %>
-      <div class="success">
-        Registro exitoso. Puedes iniciar sesión.
-      </div>
+        <div class="success">
+            Registro exitoso. Puedes iniciar sesión.
+        </div>
     <% } %>
 
-    <div id="errorMessages" class="error-messages" style="display: none;"></div>
+    <!-- Mostrar mensaje de error si existe -->
+    <% if (error) { %>
+        <div class="error-message">
+            <p><%= error %></p>
+        </div>
+    <% } %>
 
     <form id="registrationForm" action="/users/register" method="POST" enctype="multipart/form-data">
-      <div>
-        <input class="input" type="text" name="name" placeholder="Nombre" required>
-        <div class="error-message" id="nameError">
-          <% if (error && error.includes('name')) { %>
-            <%- error %>
-          <% } %>
+        <div>
+            <input class="input" type="text" name="name" placeholder="Nombre y apellido" required>
+            <div class="error-message" id="nameError">
+                <% if (error && error.includes('name')) { %>
+                    <%- error %>
+                <% } %>
+            </div>
         </div>
-      </div>
 
-      <div>
-        <input class="input" type="email" name="email" placeholder="Correo" required>
-        <div class="error-message" id="emailError">
-          <% if (error && error.includes('email')) { %>
-            <%- error %>
-          <% } %>
+        <div>
+            <input class="input" type="email" name="email" placeholder="Correo electrónico" required>
+            <div class="error-message" id="emailError">
+                <% if (error && error.includes('email')) { %>
+                    <%- error %>
+                <% } %>
+            </div>
         </div>
-      </div>
 
-      <div>
-        <input class="input" type="password" name="password" placeholder="Contraseña" required>
-        <div class="error-message" id="passwordError">
-          <% if (error && error.includes('password')) { %>
-            <%- error %>
-          <% } %>
+        <div>
+            <input class="input" type="password" name="password" placeholder="Contraseña" required>
+            <div class="error-message" id="passwordError">
+                <% if (error && error.includes('password')) { %>
+                    <%- error %>
+                <% } %>
+            </div>
         </div>
-      </div>
 
-      <div>
-        <input class="input" type="password" name="confirmPassword" placeholder="Confirmar Contraseña" required>
-        <div class="error-message" id="confirmPasswordError">
-          <% if (error && error.includes('confirmPassword')) { %>
-            <%- error %>
-          <% } %>
+        <div>
+            <input class="input" type="password" name="confirmPassword" placeholder="Confirmar Contraseña" required>
+            <div class="error-message" id="confirmPasswordError">
+                <% if (error && error.includes('confirmPassword')) { %>
+                    <%- error %>
+                <% } %>
+            </div>
         </div>
-      </div>
 
-      <div>
-        <input class="input" type="number" name="age" placeholder="Edad" required>
-        <div class="error-message" id="ageError">
-          <% if (error && error.includes('age')) { %>
-            <%- error %>
-          <% } %>
+        <div>
+            <input class="input" type="number" name="age" placeholder="Edad" required>
+            <div class="error-message" id="ageError">
+                <% if (error && error.includes('age')) { %>
+                    <%- error %>
+                <% } %>
+            </div>
         </div>
-      </div>
 
-      <label for="pais">Selecciona tu país:
-        <select name="country" id="pais" required>
-          <option value="">Selecciona un país</option>
-          <option value="Panamá">Panamá</option>
-          <option value="Colombia">Colombia</option>
-          <option value="Costa Rica">Costa Rica</option>
-          <option value="Argentina">Argentina</option>
-          <option value="Perú">Perú</option>
-          <option value="Cuba">Cuba</option>
-        </select>
-      </label>
+        <label for="pais">Selecciona tu país:
+            <select name="country" id="pais" required>
+                <option value="">Selecciona un país</option>
+                <option value="Panamá">Panamá</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Costa Rica">Costa Rica</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Perú">Perú</option>
+                <option value="Cuba">Cuba</option>
+            </select>
+        </label>
 
-      <label class="terms">
-        <input type="checkbox" name="terminos" required> Acepto términos y condiciones
-      </label>
+        <label class="terms">
+            <input type="checkbox" name="terminos" required> Acepto términos y condiciones
+        </label>
 
-      <br><br>
+        <br><br>
 
-      <label for="profileImage">Sube tu imagen de perfil:</label>
-      <input type="file" name="profileImage" id="profileImage" accept="image/*">
+        <label for="profileImage">Sube tu imagen de perfil:</label>
+        <input type="file" name="profileImage" id="profileImage" accept="image/*">
 
-      <br><br>
+        <br><br>
 
-      <button class="btn-inicio" type="submit">Crear cuenta</button>
+        <button class="btn-inicio" type="submit">Crear cuenta</button>
+        <p>¿Tienes una cuenta? <a href="/users/login">Inicia sesión aquí</a></p>
     </form>
 
     <% if (error === 'email_taken') { %>
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const errorMessagesDiv = document.getElementById("errorMessages");
-          errorMessagesDiv.innerHTML = "El correo electrónico ya está en uso.";
-          errorMessagesDiv.style.display = "block";
-        });
-      </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const errorMessagesDiv = document.getElementById("errorMessages");
+                errorMessagesDiv.innerHTML = "El correo electrónico ya está en uso.";
+                errorMessagesDiv.style.display = "block";
+            });
+        </script>
     <% } %>
 
     <% if (error === 'registration_failed') { %>
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const errorMessagesDiv = document.getElementById("errorMessages");
-          errorMessagesDiv.innerHTML = "Hubo un error al registrar el usuario.";
-          errorMessagesDiv.style.display = "block";
-        });
-      </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const errorMessagesDiv = document.getElementById("errorMessages");
+                errorMessagesDiv.innerHTML = "Hubo un error al registrar el usuario.";
+                errorMessagesDiv.style.display = "block";
+            });
+        </script>
     <% } %>
-  </div>
+</div>
 
-  <script src="/javascripts/registerValidation.js"></script>
+<script src="/javascripts/registerValidation.js"></script>
 
-  <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>
+
 </body>
-
 </html>

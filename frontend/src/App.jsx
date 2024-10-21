@@ -9,12 +9,12 @@ const App = () => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchData = async () => {
       try {
-        const productsResponse = await fetch('http://localhost:3001/api/products');
-        const usersResponse = await fetch('http://localhost:3001/api/users');
-        const categoriesResponse = await fetch('http://localhost:3001/api/categories');
+        const productsResponse = await fetch('http://localhost:3000/api/products');
+        const usersResponse = await fetch('http://localhost:3000/api/users');
+        const categoriesResponse = await fetch('http://localhost:3000/api/categories');
 
         // Verifica si las respuestas son exitosas
         if (!productsResponse.ok || !usersResponse.ok || !categoriesResponse.ok) {
